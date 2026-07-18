@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY DVC – MY VOICE | HR Newsletter · June 2026</title>
+<style>
+  :root{
+    --navy:#14264c;
+    --navy-2:#1d3461;
+    --teal:#0e7c86;
+    --teal-light:#e0f2f4;
+    --gold:#e8a33d;
+    --ink:#243040;
+    --muted:#5c6b80;
+    --paper:#f6f8fb;
+    --card:#ffffff;
+    --line:#e3e9f1;
+    --radius:14px;
+    --shadow:0 2px 14px rgba(20,38,76,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+  img{max-width:100%;display:block}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  section{scroll-margin-top:76px}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(20,38,76,.97);backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 20px}
+  .nav-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:.4px;white-space:nowrap}
+  .nav-brand img{width:34px;height:auto;border-radius:6px;background:#fff;padding:2px}
+  .nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+  .nav-links a{color:#cfd9ec;font-size:.85rem;padding:7px 11px;border-radius:8px;white-space:nowrap}
+  .nav-links a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;color:#fff;overflow:hidden;background:var(--navy)}
+  .hero-bg{position:absolute;inset:0;background:url("images/yoga-dstps.jpg") center 35%/cover no-repeat;opacity:.28;filter:saturate(.8)}
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(115deg,rgba(15,26,53,.96) 0%,rgba(20,38,76,.82) 55%,rgba(14,124,134,.55) 100%)}
+  .hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:84px 20px 72px;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
+  .hero-logo{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+  .hero-logo img{width:130px}
+  .hero-text .kicker{text-transform:uppercase;letter-spacing:3px;font-size:.8rem;color:#9fd6db;font-weight:600}
+  .hero-text h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:1px;margin:8px 0 6px;font-weight:800}
+  .hero-text .sub{font-size:1.15rem;color:#d8e2f3}
+  .hero-badges{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .hero-badges span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.85rem}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  .section{padding:64px 0 30px}
+  .section-head{margin-bottom:28px}
+  .section-head .tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:10px}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);font-weight:800}
+  .section-head p.lede{color:var(--muted);max-width:760px;margin-top:6px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .pad{padding:28px}
+  @media(min-width:760px){.pad{padding:36px}}
+
+  /* ---------- HIGHLIGHTS ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:-38px;position:relative;z-index:5}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;box-shadow:var(--shadow);transition:transform .15s}
+  .tile:hover{transform:translateY(-3px);text-decoration:none}
+  .tile .t-ico{font-size:1.4rem}
+  .tile b{display:block;color:var(--navy);margin:6px 0 2px}
+  .tile span{font-size:.83rem;color:var(--muted)}
+
+  /* ---------- EDITORS ---------- */
+  .editors-grid{display:grid;gap:24px}
+  @media(min-width:900px){.editors-grid{grid-template-columns:2.1fr 1fr}}
+  .letter p{margin-bottom:14px}
+  .letter .drop::first-letter{font-size:3.1em;font-weight:800;float:left;line-height:.85;padding:4px 10px 0 0;color:var(--teal)}
+  .signoff{font-weight:700;color:var(--navy);margin-top:18px}
+  .masthead h3{color:var(--navy);font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+  .masthead ul{list-style:none;margin-bottom:22px}
+  .masthead li{padding:7px 0;border-bottom:1px dashed var(--line)}
+  .masthead li b{color:var(--navy);display:block;font-size:.95rem}
+  .masthead li span{font-size:.83rem;color:var(--muted)}
+  .masthead .since{background:var(--teal-light);border-radius:10px;padding:12px 16px;font-size:.9rem;color:var(--teal);font-weight:600;text-align:center}
+
+  /* ---------- ARTICLES ---------- */
+  .article h3{color:var(--navy);font-size:1.35rem;margin-bottom:4px}
+  .article .byline{color:var(--muted);font-size:.9rem;margin-bottom:16px;font-style:italic}
+  .article p{margin-bottom:13px}
+  .article h4{color:var(--teal);margin:20px 0 8px;font-size:1.05rem}
+  .article ul{margin:0 0 14px 22px}
+  .article li{margin-bottom:6px}
+  .banner-img{border-radius:12px;overflow:hidden;margin-bottom:22px}
+  .lifecycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 22px}
+  .life-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .life-card .ico{width:38px;height:38px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:10px}
+  .life-card b{color:var(--navy);display:block;margin-bottom:4px;font-size:.95rem}
+  .life-card p{font-size:.86rem;color:var(--muted);margin:0}
+  .pullquote{border-left:4px solid var(--gold);background:#fdf6ea;padding:18px 22px;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;color:var(--navy);margin:22px 0 6px}
+  .fig{max-width:420px;margin:10px auto 6px}
+  .fig figcaption{text-align:center;font-size:.82rem;color:var(--muted);padding-top:8px}
+  .two-col{display:grid;gap:28px;align-items:start}
+  @media(min-width:900px){.two-col{grid-template-columns:1.4fr 1fr}}
+
+  .keypoints{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0}
+  .kp{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .kp b{color:var(--navy);display:block;margin-bottom:6px}
+  .kp ul{margin-left:18px}
+  .kp li{font-size:.88rem;margin-bottom:4px}
+
+  /* ---------- GALLERIES ---------- */
+  .gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .gallery a{border-radius:10px;overflow:hidden;display:block;position:relative;background:#dde5ef}
+  .gallery img{width:100%;height:200px;object-fit:cover;transition:transform .25s;cursor:zoom-in}
+  .gallery a:hover img{transform:scale(1.04)}
+  .gallery.tall img{height:250px}
+
+  /* ---------- EVENT BLOCKS ---------- */
+  .event{margin-bottom:44px}
+  .event-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .event-head h3{color:var(--navy);font-size:1.3rem}
+  .event-head .date{background:var(--navy);color:#fff;font-size:.75rem;padding:4px 12px;border-radius:999px;letter-spacing:.5px}
+  .event .theme{color:var(--teal);font-weight:600;font-size:.95rem;margin-bottom:10px}
+  .event p{margin-bottom:12px}
+
+  /* ---------- EMPLOYEE CORNER ---------- */
+  .poems{display:grid;gap:24px}
+  @media(min-width:960px){.poems{grid-template-columns:1fr 1fr}}
+  .poem-card{background:linear-gradient(180deg,#fffdf7,#fff);border:1px solid #eee3c8;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .poem-imgs{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .poem-imgs img{max-height:430px;width:auto;border-radius:8px}
+  .poet{display:flex;gap:14px;align-items:center;margin-top:16px;border-top:1px dashed #e3d9bd;padding-top:16px}
+  .poet img{width:74px;height:88px;object-fit:cover;border-radius:10px;border:2px solid var(--teal-light)}
+  .poet b{color:var(--navy);display:block}
+  .poet span{font-size:.85rem;color:var(--muted);display:block;line-height:1.45}
+
+  /* ---------- CSR ---------- */
+  .csr-grid{display:grid;gap:22px}
+  @media(min-width:860px){.csr-grid{grid-template-columns:1fr 1fr}}
+  .csr-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .csr-card .csr-media{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .csr-card .csr-media.single{grid-template-columns:1fr}
+  .csr-card .csr-media a{display:block}
+  .csr-card .csr-media img{height:210px;width:100%;object-fit:cover;cursor:zoom-in}
+  .csr-card .csr-body{padding:22px 24px 24px}
+  .csr-card h3{color:var(--navy);font-size:1.1rem;margin-bottom:8px}
+  .csr-card p{font-size:.93rem;color:#37455c}
+  .stat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .stat-chips span{background:var(--teal-light);color:var(--teal);font-weight:700;font-size:.8rem;padding:4px 12px;border-radius:999px}
+
+  /* ---------- HEALTH ---------- */
+  .health-flex{display:grid;gap:28px;align-items:center}
+  @media(min-width:860px){.health-flex{grid-template-columns:1fr 1.2fr}}
+  .health-poster{max-width:430px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .health-tips li{margin-bottom:8px}
+
+  /* ---------- QUIZ ---------- */
+  .quiz-wrap{display:grid;gap:26px}
+  @media(min-width:960px){.quiz-wrap{grid-template-columns:1.5fr 1fr}}
+  .quiz-list{counter-reset:q;list-style:none}
+  .quiz-list li{counter-increment:q;position:relative;padding:13px 16px 13px 56px;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;font-size:.95rem}
+  .quiz-list li::before{content:counter(q,decimal-leading-zero);position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--teal);font-size:1rem}
+  .quiz-rules{background:#fdf6ea;border:1px solid #efdbb2;border-radius:12px;padding:18px 20px;font-size:.9rem;margin-top:14px}
+  .winners h3{color:var(--navy);margin-bottom:14px}
+  .winner{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
+  .winner img{width:64px;height:76px;object-fit:cover;border-radius:10px}
+  .winner b{color:var(--navy);display:block}
+  .winner span{font-size:.84rem;color:var(--muted)}
+  .winner .medal{margin-left:auto;font-size:1.4rem}
+
+  /* ---------- CONTRIBUTE / FOOTER ---------- */
+  .contrib{background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 60%,var(--teal) 130%);color:#dfe8f6;border-radius:var(--radius);overflow:hidden}
+  .contrib-grid{display:grid;gap:0}
+  @media(min-width:900px){.contrib-grid{grid-template-columns:1.2fr 1fr}}
+  .contrib .pad h2{color:#fff;margin-bottom:12px;font-size:1.5rem}
+  .contrib ul{list-style:none;margin:14px 0}
+  .contrib li{padding:6px 0 6px 26px;position:relative;font-size:.94rem}
+  .contrib li::before{content:"✦";position:absolute;left:2px;color:var(--gold)}
+  .contrib .email{display:inline-block;background:#fff;color:var(--navy);font-weight:700;padding:10px 20px;border-radius:999px;margin-top:10px}
+  .contrib .email:hover{text-decoration:none;background:var(--gold);color:#fff}
+  .contrib-photo{min-height:280px;background:url("images/yoga-dstps.jpg") center/cover;display:flex;flex-direction:column;justify-content:flex-end}
+  .contrib-photo figcaption{background:rgba(15,26,53,.75);color:#cfd9ec;font-size:.8rem;padding:6px 14px;text-align:right}
+  footer{background:#0f1a35;color:#8fa1c0;padding:34px 20px;text-align:center;font-size:.85rem;margin-top:70px}
+  footer .values{max-width:760px;margin:0 auto 20px;background:#fff;border-radius:12px;padding:10px}
+  footer .foot-title{color:#fff;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+  footer .disclaimer{margin-top:14px;font-size:.78rem;opacity:.75}
+
+  /* ---------- LIGHTBOX ---------- */
+  dialog.lightbox{border:none;background:rgba(10,16,32,.92);padding:0;max-width:92vw;max-height:92vh;border-radius:12px;outline:none}
+  dialog.lightbox::backdrop{background:rgba(8,12,24,.8)}
+  dialog.lightbox img{max-width:92vw;max-height:86vh;width:auto;height:auto;object-fit:contain;margin:0 auto}
+  dialog.lightbox .close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1}
+  .caption-bar{color:#cbd6ea;text-align:center;font-size:.85rem;padding:8px 16px}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top" style="text-decoration:none">
+      <img src="images/dvc-logo.jpg" alt="DVC logo">
+      MY DVC – MY VOICE
+    </a>
+    <div class="nav-links">
+      <a href="#editors">Editors' Desk</a>
+      <a href="#insights">HR Insights</a>
+      <a href="#initiative">HR Initiative</a>
+      <a href="#employee-corner">Employee Corner</a>
+      <a href="#events">Events</a>
+      <a href="#csr">CSR</a>
+      <a href="#health">Health</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#contribute">Contribute</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-inner">
+    <div class="hero-logo"><img src="images/dvc-logo.jpg" alt="Damodar Valley Corporation logo"></div>
+    <div class="hero-text">
+      <div class="kicker">Damodar Valley Corporation · HR Newsletter</div>
+      <h1>MY DVC – MY VOICE</h1>
+      <div class="sub">June 2026 Edition · Powering Progress, Empowering People</div>
+      <div class="hero-badges">
+        <span>🤖 AI in Human Resources</span>
+        <span>🤝 संवाद से समाधान अभियान</span>
+        <span>🧘 International Yoga Day</span>
+        <span>🌱 World Environment Day</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HIGHLIGHT TILES ================= -->
+<div class="wrap">
+  <div class="tiles">
+    <a class="tile" href="#insights"><div class="t-ico">💡</div><b>HR Insight</b><span>Artificial Intelligence in Human Resources</span></a>
+    <a class="tile" href="#initiative"><div class="t-ico">🗣️</div><b>HR Initiative</b><span>Dialogue with outsourced workers at MTPS</span></a>
+    <a class="tile" href="#events"><div class="t-ico">🎉</div><b>Celebrations</b><span>Yoga Day, Environment Day &amp; Safety Week</span></a>
+    <a class="tile" href="#csr"><div class="t-ico">❤️</div><b>CSR Impact</b><span>Health, education &amp; community welfare</span></a>
+    <a class="tile" href="#quiz"><div class="t-ico">⚡</div><b>Current Affairs Quiz</b><span>Power up your knowledge &amp; win</span></a>
+  </div>
+</div>
+
+<!-- ================= FROM THE EDITORS ================= -->
+<section class="section" id="editors">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">From the Editors</span>
+      <h2>Powering Progress, Empowering People</h2>
+    </div>
+    <div class="editors-grid">
+      <div class="card pad letter">
+        <p class="drop">Dear Readers, welcome to the June 2026 edition of <b>MY DVC – MY VOICE</b>. As we step into the vibrant monsoon season, this month's edition captures our collective strides toward technological modernization, legislative readiness, community welfare, and sustainable growth across the Damodar Valley Corporation.</p>
+        <p>Our featured HR Insight takes a deep dive into the dual realities of the modern workplace: <b>Artificial Intelligence in Human Resources</b>. As digital transformation reshapes the corporate landscape, the future lies in the powerful intersection of artificial intelligence and human intelligence — using AI to drive analytical precision and speed while anchoring our core practices in empathy, ethics, and human-centric leadership. Alongside technological adoption, keeping pace with changing statutory frameworks remains vital. This issue highlights the crucial development regarding the delegation of authority under the Industrial Relations Code, 2020, designed to streamline trade union recognition and strengthen collective bargaining.</p>
+        <p>Operational excellence is driven by a committed, safe, and collaborative workforce. We are proud to share the launch of <b>"संवाद से समाधान अभियान"</b> at MTPS. Conceived as a flagship campaign, this structured dialogue forum bridges management, contractors, and outsourced workers to address compliance, welfare, and safety through collective problem-solving. Speaking of safety, our nationwide commitment to operational harmony was prominently displayed during the <b>Electrical Safety Week Campaign</b>, bringing crucial awareness, emergency planning updates, and safety pledges to every plant site.</p>
+        <p>Beyond our operations, DVC continues to foster a culture of holistic health and environmental consciousness. This month, our stations celebrated the <b>12th International Day of Yoga</b> under the theme "Yoga for Healthy Ageing," emphasizing sustainable physical and mental well-being. Furthermore, aligning with the global campaign <b>#NowForClimate</b>, World Environment Day was marked by impactful green rallies, extensive tree plantation drives, and an inspiring "Waste to Worth" campaign at DSTPS that transformed industrial scrap into eco-friendly plant transportation.</p>
+        <p>From critical CSR milestones — like the launch of the Trinetra Archery Academy at DVC Tubed to support rural youth, local health drives, and collaborative blood donation camps — to creative expressions in our Employee Corner, this issue reflects the vibrant pulse of DVC.</p>
+        <p>We extend our deep gratitude to the contributors who made this edition possible and invite all employees to keep sharing their achievements, ideas, and creative entries. Don't forget to put your knowledge to the test in this month's Current Affairs Quiz!</p>
+        <p>Happy Reading!</p>
+        <p class="signoff">✍️ The Editorial Team<br><span style="font-weight:400;color:var(--muted)">MY DVC – MY VOICE</span></p>
+      </div>
+      <aside class="card pad masthead">
+        <h3>Patrons</h3>
+        <ul>
+          <li><b>Shri Gurdeep Singh</b><span>Chairman</span></li>
+          <li><b>Shri Sidhartha Sankar Das</b><span>Member Secretary</span></li>
+          <li><b>Shri Saurabh Sharma</b><span>Executive Director (HR)</span></li>
+        </ul>
+        <h3>Editors</h3>
+        <ul>
+          <li><b>Abhijit Sen</b></li>
+          <li><b>Rashi Agarwal</b></li>
+          <li><b>Ajit Kumar</b></li>
+        </ul>
+        <div class="since">📰 First Published · August 2012</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HR INSIGHTS ================= -->
+<section class="section" id="insights">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">HR Insight</span>
+      <h2>Artificial Intelligence in Human Resources</h2>
+      <p class="lede">Transforming the Future of Work</p>
+    </div>
+
+    <div class="card pad article">
+      <div class="banner-img"><img src="images/ai-banner.jpg" alt="People First, Powered by AI — building a future-ready workforce together"></div>
+      <p>The Human Resources (HR) function is undergoing a significant transformation with the adoption of Artificial Intelligence (AI). Once focused primarily on administrative processes, HR is now evolving into a strategic business partner by leveraging AI to improve efficiency, enhance employee experience, and enable data-driven decision-making. Rather than replacing human judgment, AI empowers HR professionals by automating routine tasks and allowing them to focus on people-centric initiatives.</p>
+
+      <h4>AI Across the Employee Lifecycle</h4>
+      <div class="lifecycle">
+        <div class="life-card"><div class="ico">🎯</div><b>Talent Acquisition</b><p>AI-powered platforms screen resumes, match candidate profiles with job requirements, schedule interviews, and answer applicant queries through chatbots — reducing hiring time while recruiters focus on skills, cultural fit, and potential.</p></div>
+        <div class="life-card"><div class="ico">📚</div><b>Learning &amp; Development</b><p>Modern AI systems recommend personalized learning paths based on role, competencies, and career aspirations. Adaptive platforms help employees acquire new skills at their own pace.</p></div>
+        <div class="life-card"><div class="ico">📈</div><b>Performance Management</b><p>AI enables managers to analyze performance trends, identify skill gaps, and provide timely feedback. Data-driven insights support fairer evaluations and informed talent decisions.</p></div>
+        <div class="life-card"><div class="ico">💬</div><b>Employee Engagement</b><p>AI-powered sentiment analysis and virtual HR assistants help organizations understand employee concerns, respond to routine queries, and improve workplace communication.</p></div>
+        <div class="life-card"><div class="ico">🗺️</div><b>Workforce Planning</b><p>By analyzing historical and real-time data, AI assists HR leaders in forecasting manpower requirements, identifying future skill needs, and planning succession effectively.</p></div>
+      </div>
+
+      <h4>Opportunities for DVC</h4>
+      <p>For Damodar Valley Corporation, AI presents opportunities to modernize HR processes while strengthening organizational effectiveness. Potential applications include:</p>
+      <ul>
+        <li>AI-enabled recruitment and onboarding support</li>
+        <li>Digital HR assistants for employee services and policy guidance</li>
+        <li>Predictive analytics for training and competency development</li>
+        <li>Data-driven workforce planning and succession management</li>
+        <li>AI-assisted analysis of employee feedback and engagement trends</li>
+        <li>Enhanced safety learning through personalized digital training modules</li>
+      </ul>
+      <p>These applications can improve service delivery while enabling HR teams to devote more time to employee development, organizational culture, and strategic initiatives.</p>
+
+      <h4>Responsible and Ethical Use of AI</h4>
+      <p>The successful adoption of AI requires responsible implementation. HR professionals must ensure that AI systems are transparent, unbiased, secure, and compliant with organizational policies and legal requirements. Human oversight remains essential, particularly in decisions involving recruitment, promotions, performance evaluation, and employee welfare. AI should complement — not replace — the empathy, ethical judgment, and interpersonal skills that define effective human resource management.</p>
+
+      <h4>Preparing for the Future</h4>
+      <p>As workplaces become increasingly digital, HR professionals must develop AI literacy alongside their expertise in people management. The future of HR lies in the collaboration between artificial intelligence and human intelligence. While AI brings speed, accuracy, and analytical capabilities, people bring creativity, empathy, ethics, and leadership. Together, they can create smarter workplaces, better employee experiences, and more resilient organizations. As DVC continues its journey of digital transformation, embracing AI responsibly can help build an agile, efficient, and employee-centric HR ecosystem — one that is well-equipped to meet the challenges and opportunities of the future.</p>
+
+      <div class="pullquote">"The future of HR is not AI replacing people — it is people empowered by AI to make smarter, faster, and more human-centric decisions."</div>
+    </div>
+
+    <div class="two-col" style="margin-top:26px">
+      <div class="card pad article">
+        <h3>AI Certification: Preparing Professionals for the Future</h3>
+        <div class="byline">— Binay Tudu, Manager (HR)</div>
+        <p>AI skills have become essential in today's workplace as organizations increasingly rely on Artificial Intelligence for automation, data-driven decision-making, and operational efficiency. Demand for AI-certified professionals is rapidly growing because certified individuals possess the practical knowledge required to implement and manage AI technologies effectively.</p>
+        <p>DVC is progressing towards digital transformation through technology-driven initiatives such as SAP, and AI certification programs for executives through short-term Learning &amp; Development (L&amp;D) courses can support this transformation.</p>
+        <p>AI certifications benefit both organizations and employees by helping bridge skill gaps, improving productivity, enhancing employee mobility, and supporting career growth. Professional AI credentials provide a competitive advantage by validating an individual's ability to design, implement, and manage AI solutions while demonstrating practical expertise that employers increasingly value.</p>
+        <p>Investing in AI certification prepares employees for future challenges, enabling them to contribute more effectively to organizational innovation and technological advancement.</p>
+      </div>
+      <div class="card pad">
+        <figure class="fig">
+          <a href="images/ai-certificate.png" class="zoom"><img src="images/ai-certificate.png" alt="AI Certificate in 28 days — illustrated learning path"></a>
+          <figcaption>Figure 1: AI Certification</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="card pad article" style="margin-top:26px">
+      <h3>Recognition of Trade Unions under the Industrial Relations Code, 2020</h3>
+      <div class="byline">— Ajay Kumar Singh, Manager (HR)</div>
+      <p>The Ministry of Labour &amp; Employment has issued a notification (Gazette of India, 11 June 2026) delegating the authority to appoint Verification Officers for the recognition of Negotiating Unions and Negotiating Councils under the Industrial Relations Code, 2020. This step is expected to streamline the recognition of representative trade unions in establishments where the Central Government is the appropriate authority.</p>
+      <h4>Why is this Important?</h4>
+      <p>Section 14 of the Industrial Relations Code, 2020 provides for the recognition of a Negotiating Union or Negotiating Council to facilitate effective collective bargaining between employers and workers. Verification Officers are responsible for verifying union membership and ensuring compliance with the prescribed criteria for recognition.</p>
+      <div class="keypoints">
+        <div class="kp"><b>🔑 Key Highlights</b>
+          <ul>
+            <li>Power to appoint Verification Officers delegated to <b>Joint Secretaries</b> and <b>officers handling Industrial Relations</b> in the Ministry of Labour &amp; Employment</li>
+            <li>Delegation made under Section 100 of the IR Code, 2020, read with Rule 9(3) of the Industrial Relations (Central) Rules</li>
+          </ul>
+        </div>
+        <div class="kp"><b>🧾 Role of Verification Officers</b>
+          <ul>
+            <li>Verify trade union membership claims</li>
+            <li>Examine relevant records and documents</li>
+            <li>Conduct membership verification</li>
+            <li>Determine representative status for recognition</li>
+            <li>Facilitate recognition of Negotiating Unions or Councils</li>
+          </ul>
+        </div>
+        <div class="kp"><b>📊 Expected Impact</b>
+          <ul>
+            <li>Improved administrative efficiency with fewer procedural delays</li>
+            <li>Expedited union recognition and timely constitution of negotiating bodies</li>
+            <li>Stronger collective bargaining and effective industrial relations</li>
+          </ul>
+        </div>
+      </div>
+      <p>The notification applies to establishments where the Central Government is the appropriate government, including eligible Central Public Sector Undertakings and other notified establishments.</p>
+      <h4>Conclusion</h4>
+      <p>The delegation of appointment powers marks an important step towards the effective implementation of the Industrial Relations Code, 2020. By simplifying the recognition process for Negotiating Unions and Negotiating Councils, the Government aims to promote faster decision-making, stronger collective bargaining, and improved industrial relations.</p>
+      <p style="font-size:.85rem;color:var(--muted)"><i>Source: Ministry of Labour &amp; Employment, Government of India.</i></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HR INITIATIVE ================= -->
+<section class="section" id="initiative">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">HR Initiative</span>
+      <h2>"संवाद से समाधान अभियान" — Dialogue with Outsourced Workers at MTPS</h2>
+      <p class="lede">A flagship program to address the issues and concerns of outsourced workers through constructive dialogue and collaborative problem-solving.</p>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <a href="images/samvad-launch.jpg" class="zoom"><img src="images/samvad-launch.jpg" alt="Launch of Samvad se Samadhan Abhiyan at MTPS" style="width:100%"></a>
+      <div class="pad article">
+        <p>MTPS is the largest power station of DVC and engages approximately <b>3,500 outsourced workers</b> through various contractors and agencies. These workers frequently encounter issues relating to timely disbursement of wages, payment of prescribed wage rates, availability of statutory social security benefits, and other welfare-related matters. Given the large outsourced workforce and the diversity of issues involved, there was previously no structured platform where outsourced workers, contractors/agencies, and the management could regularly interact, discuss concerns, and work collaboratively towards constructive solutions.</p>
+        <p>The campaign is expected to promote constructive engagement, improve compliance with statutory provisions, and contribute towards a more productive and amicable work environment. Through regular dialogue and coordinated efforts among all stakeholders, it seeks to facilitate timely resolution of issues, enhance workers' satisfaction, strengthen trust, and foster harmonious industrial relations.</p>
+        <h4>Key Features of the Campaign</h4>
+        <ul>
+          <li>A structured dialogue session every Saturday (except the second Saturday of the month) with outsourced workers and their representatives/unions, ordinarily from 11:00 A.M. to 12:00 Noon</li>
+          <li>Contractors/agencies invited to participate to facilitate effective discussion and resolution of issues</li>
+          <li>A department-wise schedule for interaction prepared and circulated in advance</li>
+          <li>Awareness programmes on payment of wages, prescribed wage rates, EPF &amp; ESI contributions, checking EPF balances, filing withdrawal claims, ESI benefits, and other statutory welfare provisions</li>
+          <li>Awareness on technology-enabled labour welfare initiatives and compliance-related digital platforms</li>
+          <li>Orientation sessions on the Contract Labour Information Management System (CLIMS) Module for workers and contractors</li>
+          <li>Safety awareness programmes on safety rules, safe work practices, hazard identification, and precautionary measures — in coordination with the Safety Department</li>
+          <li>Knowledge dissemination on the provisions of the new Labour Codes and other relevant labour laws</li>
+          <li>A platform to discuss and resolve issues relating to working conditions, welfare measures, statutory compliance, and grievance redressal</li>
+          <li>Documented proceedings of each session, with monitored follow-up action to ensure timely resolution</li>
+        </ul>
+        <p>The initiative seeks to create an inclusive environment where concerns can be openly discussed and addressed through collective efforts. It is an endeavour to reinforce the sense of participation, involvement, and belongingness among outsourced workers — and to make them feel that their contribution is of paramount importance to the growth, productivity, and success of MTPS.</p>
+        <div class="byline" style="text-align:right">— Binay Tudu, Manager (HR), MTPS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMPLOYEE CORNER ================= -->
+<section class="section" id="employee-corner">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Employee Corner</span>
+      <h2>Creative Expressions from Our People</h2>
+    </div>
+    <div class="poems">
+      <div class="poem-card">
+        <div class="poem-imgs">
+          <img src="images/poem1-title.png" alt="वरिष्ठ नागरिकों के लिए कविता" style="max-height:56px">
+        </div>
+        <div class="poem-imgs">
+          <a href="images/poem1-col1.png" class="zoom"><img src="images/poem1-col1.png" alt="कविता — भाग 1"></a>
+          <a href="images/poem1-col2.png" class="zoom"><img src="images/poem1-col2.png" alt="कविता — भाग 2"></a>
+        </div>
+        <div class="poet">
+          <img src="images/pawan-kumar.jpg" alt="श्री पवन कुमार">
+          <div>
+            <b>श्री पवन कुमार (568422)</b>
+            <span>वरिष्ठ प्रबंधक (एम), सुरक्षा विभाग<br>चंद्रपुरा ताप विद्युत स्टेशन (CTPS), दामोदर वैली कॉर्पोरेशन</span>
+          </div>
+        </div>
+      </div>
+      <div class="poem-card">
+        <div class="poem-imgs">
+          <a href="images/poem2.png" class="zoom"><img src="images/poem2.png" alt="शीर्षक — शोक की नदी"></a>
+        </div>
+        <div class="poet">
+          <img src="images/ashok-kapoor.jpg" alt="अशोक कुमार कपूर">
+          <div>
+            <b>अशोक कुमार कपूर</b>
+            <span>सहायक ग्रेड-I (हिंदी) · कर्मचारी संख्या 546267<br>डीवीसी, डीएसटीपीएस, अंडाल</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section class="section" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Events &amp; Celebrations</span>
+      <h2>Life Across DVC This Month</h2>
+    </div>
+
+    <!-- Yoga Day -->
+    <div class="event card pad article">
+      <div class="event-head"><h3>🧘 Celebration of International Yoga Day 2026</h3><span class="date">21 June 2026</span></div>
+      <div class="theme">Theme: "Yoga for Healthy Ageing"</div>
+      <p>Damodar Valley Corporation enthusiastically celebrated the 12th International Day of Yoga on 21 June 2026 across its establishments. The celebrations reflected the Corporation's continued commitment to promoting employee health, well-being, and a balanced lifestyle through the practice of yoga.</p>
+      <p>Across all DVC locations, the celebrations reinforced the importance of incorporating yoga into everyday life to improve physical health, reduce stress, strengthen mental resilience, and promote holistic well-being. The programmes concluded with a collective pledge by participants to make yoga a regular practice and to foster a culture of health, wellness, and balanced living throughout the Corporation.</p>
+      <div class="gallery">
+        <a href="images/yoga-2.jpg" class="zoom"><img src="images/yoga-2.jpg" alt="Yoga session in progress at a DVC establishment"></a>
+        <a href="images/yoga-3.jpg" class="zoom"><img src="images/yoga-3.jpg" alt="Yoga Day celebration with dignitaries"></a>
+        <a href="images/yoga-6.jpg" class="zoom"><img src="images/yoga-6.jpg" alt="Employees practising yoga"></a>
+        <a href="images/yoga-1.jpg" class="zoom"><img src="images/yoga-1.jpg" alt="Yoga Day group session"></a>
+        <a href="images/yoga-4.jpg" class="zoom"><img src="images/yoga-4.jpg" alt="Yoga Day observance"></a>
+        <a href="images/yoga-5.jpg" class="zoom"><img src="images/yoga-5.jpg" alt="Outdoor yoga practice"></a>
+      </div>
+    </div>
+
+    <!-- Environment Day -->
+    <div class="event card pad article">
+      <div class="event-head"><h3>🌍 World Environment Day 2026 at DSTPS</h3><span class="date">5 June 2026</span></div>
+      <div class="theme">Theme: "Inspired by Nature for Climate" · #NowForClimate</div>
+      <p>Durgapur Steel Thermal Power Station (DSTPS) celebrated World Environment Day with a series of initiatives promoting environmental sustainability, reflecting the station's commitment to a greener future.</p>
+      <p>The celebrations began with a <b>Green March</b> led by Shri Anil Kumar Jain, CGM &amp; Head of Project, joined by senior officials, employees, CISF personnel, contractual workers, and women employees — spreading awareness through slogans advocating environmental conservation. A <b>Tree Plantation Drive</b> followed, during which nearly 100 fruit-bearing saplings were planted to enhance the station's green cover and biodiversity. Shri Jain encouraged everyone to adopt eco-friendly practices such as conserving energy and water, reducing plastic use, and supporting plantation drives.</p>
+      <p>A <b>Cycle Rally at Benachity Colony</b> further promoted pollution-free transportation and cycling as a healthy, sustainable mode of travel. The programme concluded with a collective pledge to protect the environment, reaffirming DSTPS's commitment to sustainable development and responsible power generation.</p>
+      <div class="gallery">
+        <a href="images/env-march.jpg" class="zoom"><img src="images/env-march.jpg" alt="Green March at DSTPS"></a>
+        <a href="images/env-cycle.jpg" class="zoom"><img src="images/env-cycle.jpg" alt="Cycle rally at Benachity Colony"></a>
+      </div>
+    </div>
+
+    <!-- Safety Week -->
+    <div class="event card pad article">
+      <div class="event-head"><h3>⚡ Electrical Safety Week Campaign 2026</h3><span class="date">26 June 2026</span></div>
+      <div class="theme">National Electrical Safety Day · Theme: "Today's Awareness, Tomorrow's Prevention"</div>
+      <p>DVC remains committed to fostering a vibrant safety culture and ensuring a safe and healthy working environment for all. The programme across DVC included Electrical Safety Badge Pinning, a Safety &amp; Health Pledge, release of the revised On-Site Disaster Management Plan, distribution of electrical safety awareness materials and Electric Shock Treatment Charts, and the opening of Safety Suggestion Boxes.</p>
+      <div class="gallery">
+        <a href="images/safety-5.jpg" class="zoom"><img src="images/safety-5.jpg" alt="Safety pledge with workforce at CTPS"></a>
+        <a href="images/safety-4.jpg" class="zoom"><img src="images/safety-4.jpg" alt="Safety week gathering at MTPS"></a>
+        <a href="images/safety-1.jpg" class="zoom"><img src="images/safety-1.jpg" alt="Safety review meeting"></a>
+        <a href="images/safety-2.jpg" class="zoom"><img src="images/safety-2.jpg" alt="Safety awareness materials display"></a>
+        <a href="images/safety-3.jpg" class="zoom"><img src="images/safety-3.jpg" alt="Safety orientation for workers"></a>
+      </div>
+    </div>
+
+    <!-- Swachhta -->
+    <div class="event card pad article">
+      <div class="event-head"><h3>♻️ Swachhta Day Highlights — 'Waste to Worth' Cycling Initiative</h3><span class="date">19 June 2026</span></div>
+      <div class="theme">Swachhata Pakhwada 2026 · DSTPS, Andal</div>
+      <p>As part of Swachhata Pakhwada 2026, DVC's Durgapur Steel Thermal Power Station launched an innovative <b>"Waste to Worth"</b> initiative by refurbishing <b>12 discarded bicycles</b> into fully functional cycles for short-distance movement within the plant premises.</p>
+      <p>The initiative promotes eco-friendly transportation by reducing the use of motor vehicles, conserving fuel, lowering carbon emissions, and encouraging a healthier lifestyle among employees. Launched under the leadership of Shri Anil Kumar Jain, CGM &amp; HOP, the programme was marked by a symbolic cycle ride by senior officials, reinforcing the message of green mobility and employee wellness.</p>
+      <p>By transforming scrap into valuable assets, the initiative reflects DSTPS's commitment to Swachhata, sustainability, resource conservation, the circular economy, and employee well-being — demonstrating how innovative practices can contribute to a greener and healthier workplace.</p>
+      <div class="gallery">
+        <a href="images/waste-to-worth.jpg" class="zoom"><img src="images/waste-to-worth.jpg" alt="Before and after: discarded bicycles refurbished into working cycles"></a>
+        <a href="images/sapling.jpg" class="zoom"><img src="images/sapling.jpg" alt="Hands nurturing a sapling — sustainability at DVC"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CSR ================= -->
+<section class="section" id="csr">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">CSR &amp; Community Impact</span>
+      <h2>Serving the Communities Around Us</h2>
+    </div>
+    <div class="csr-grid">
+
+      <div class="csr-card">
+        <div class="csr-media single"><a href="images/polio.jpg" class="zoom"><img src="images/polio.jpg" alt="Pulse Polio immunization at KTPS Hospital"></a></div>
+        <div class="csr-body">
+          <h3>💧 KTPS Hospital — Pulse Polio Immunization Mop-Up Round</h3>
+          <p>DVC's Koderma Thermal Power Station (KTPS) Hospital conducted a mop-up round of the Pulse Polio Immunization Campaign on 1 July 2026 in collaboration with the Primary Health Centre (PHC), Chandwara, Koderma. Children below five years of age who had missed their dose were administered the life-saving oral polio vaccine under the nationwide slogan <b>"दो बूंद ज़िन्दगी की"</b> — supporting the Government of India's mission to sustain a polio-free nation.</p>
+          <div class="stat-chips"><span>60 children immunized</span><span>1 July 2026</span></div>
+        </div>
+      </div>
+
+      <div class="csr-card">
+        <div class="csr-media single"><a href="images/tb-kits.jpg" class="zoom"><img src="images/tb-kits.jpg" alt="Nutrition kit distribution to TB patients at Vishnugarh CHC"></a></div>
+        <div class="csr-body">
+          <h3>🍚 Nutrition as a Weapon Against Tuberculosis — DVC Konar</h3>
+          <p>Under its CSR initiative and the Government of India's Nikshay Poshan Yojana, DVC Konar distributed nutrition kits to tuberculosis patients at the Vishnugarh Community Health Centre in Hazaribagh, following the Deputy Commissioner's directions to provide nutritional support alongside medical treatment. Each kit contained gram, lentils, jaggery, mustard oil, soybean oil, and soya chunks to improve patients' immunity and recovery.</p>
+          <div class="stat-chips"><span>60 TB patients supported</span></div>
+        </div>
+      </div>
+
+      <div class="csr-card">
+        <div class="csr-media">
+          <a href="images/archery-1.jpg" class="zoom"><img src="images/archery-1.jpg" alt="Archery demonstration at the Trinetra Archery Academy inauguration"></a>
+          <a href="images/archery-2.jpg" class="zoom"><img src="images/archery-2.jpg" alt="Inauguration of the Trinetra Archery Academy at DVC Tubed"></a>
+        </div>
+        <div class="csr-body">
+          <h3>🏹 Trinetra Archery Academy — Empowering Rural &amp; Tribal Youth</h3>
+          <p>DVC Tubed inaugurated the Trinetra Archery Academy at DVC Tubed Coal Mines, Latehar, in collaboration with the Dola &amp; Rahul Banerjee Sports Foundation. The academy was inaugurated by Shri S.K. Panda, Member (Technical), DVC, in the presence of senior officials and Arjuna Awardees Smt. Dola Banerjee and Shri Rahul Banerjee. It will provide professional archery training — building technical skills, fitness, mental resilience, and sportsmanship. Cultural performances and an archery demonstration marked the occasion.</p>
+          <div class="stat-chips"><span>Latehar, Jharkhand</span><span>Arjuna Awardee mentors</span></div>
+        </div>
+      </div>
+
+      <div class="csr-card">
+        <div class="csr-media">
+          <a href="images/csr-school-1.jpg" class="zoom"><img src="images/csr-school-1.jpg" alt="Distribution of refurbished furniture under the Education Development Programme"></a>
+          <a href="images/csr-school-2.jpg" class="zoom"><img src="images/csr-school-2.jpg" alt="School students receiving support from DVC"></a>
+          <a href="images/csr-school-3.jpg" class="zoom"><img src="images/csr-school-3.jpg" alt="Refurbished steel furniture ready for schools"></a>
+          <a href="images/csr-school-4.jpg" class="zoom"><img src="images/csr-school-4.jpg" alt="Ceiling fans handed over to school representatives"></a>
+        </div>
+        <div class="csr-body">
+          <h3>🏫 Sustainable Community Development Through Reuse</h3>
+          <p>At RTPS, refurbished steel furniture made from surplus office assets was distributed to Naragoria D.D. High School, Dumurhir High School, and nearby primary schools under the Education Development Programme. At MTPS, 50 serviceable ceiling fans were distributed to Gangajalghati High School and Nityanandpur High School, and carrom boards were provided to the youth of Lotiaboni Navin Sangh to promote indoor sports and constructive recreation.</p>
+          <div class="stat-chips"><span>5+ schools supported</span><span>50 ceiling fans</span></div>
+        </div>
+      </div>
+
+      <div class="csr-card" style="grid-column:1/-1">
+        <div class="csr-media">
+          <a href="images/blood-1.jpg" class="zoom"><img src="images/blood-1.jpg" alt="Blood donation camp at a DVC project"></a>
+          <a href="images/blood-2.jpg" class="zoom"><img src="images/blood-2.jpg" alt="Voluntary blood donors felicitated"></a>
+        </div>
+        <div class="csr-body">
+          <h3>🩸 Blood Donation Drives Save Lives, Strengthen Community Healthcare</h3>
+          <p>DVC organized blood donation camps across its projects. On World Blood Donor Day, MTPS collected 46 units of blood with participation from employees, CISF personnel, and local residents. Ahead of DVC Foundation Day, RTPS collected 40 units, while Konar Dispensary — in collaboration with Arogyam Hospital, Hazaribag — collected another 40 units. These initiatives reflect DVC's commitment to strengthening healthcare services and fostering a spirit of service and community welfare.</p>
+          <div class="stat-chips"><span>MTPS · 46 units</span><span>RTPS · 40 units</span><span>Konar · 40 units</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEALTH CORNER ================= -->
+<section class="section" id="health">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Health Corner</span>
+      <h2>Monsoon: Stay Safe &amp; Healthy</h2>
+    </div>
+    <div class="card pad health-flex">
+      <div class="health-poster">
+        <a href="images/health-poster.png" class="zoom"><img src="images/health-poster.png" alt="Monsoon Health Corner poster — stay safe and healthy"></a>
+      </div>
+      <div class="article">
+        <h3 style="color:var(--navy);margin-bottom:10px">A Season of Care</h3>
+        <p>With the monsoon at its peak, this month's Health Corner is a timely reminder to guard against seasonal illnesses. The poster highlights simple, practical precautions for the rainy season:</p>
+        <ul class="health-tips" style="margin-left:22px">
+          <li><b>Vector-borne diseases</b> — prevent dengue, malaria, and chikungunya by avoiding stagnant water and using protection</li>
+          <li><b>Water-borne illnesses</b> — drink safe water and eat freshly cooked food</li>
+          <li><b>Flu &amp; fever</b> — keep immunity up and seek timely medical advice</li>
+          <li><b>Digestive issues</b> — practice food hygiene and stay hydrated</li>
+          <li><b>Skin problems</b> — keep skin dry and maintain personal hygiene</li>
+          <li><b>General hygiene</b> — handwashing and clean surroundings go a long way</li>
+        </ul>
+        <p style="color:var(--muted);font-size:.9rem">Click the poster to view the full prevention guide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">⚡ Power Up Your Knowledge</span>
+      <h2>Current Affairs Quiz</h2>
+      <p class="lede">Rely on your own knowledge — no Google search or AI tools while answering. Let's keep the challenge fun and fair!</p>
+    </div>
+    <div class="quiz-wrap">
+      <div>
+        <ol class="quiz-list">
+          <li>What is India's target for achieving 500 GW of non-fossil fuel-based installed electricity capacity?</li>
+          <li>Which Maharatna PSU announced plans to invest over ₹2 lakh crore in renewable energy projects in Madhya Pradesh?</li>
+          <li>Which NTPC subsidiary is leading the company's renewable energy expansion across India?</li>
+          <li>Which Government of India scheme promotes the installation of rooftop solar systems for households?</li>
+          <li>Which organization serves as the central nodal agency for implementing many of India's renewable energy power procurement schemes?</li>
+          <li>Which transmission PSU has been allocated one of the largest capital expenditure plans among power PSUs for FY 2025–26?</li>
+          <li>What is the primary purpose of a Battery Energy Storage System (BESS) being deployed across India's power sector?</li>
+          <li>Which renewable energy technology is increasingly being promoted alongside solar and wind to support round-the-clock power supply?</li>
+          <li>Which Government ministry is responsible for overseeing India's power sector and Central Public Sector Enterprises such as NTPC, NHPC, and POWERGRID?</li>
+          <li>Which clean fuel is being actively promoted by India for decarbonizing industries such as steel, fertilizer, refining, and power?</li>
+        </ol>
+        <div class="quiz-rules">
+          <b>📬 How to participate:</b> All DVC employees eager to participate may send their answers to <a href="mailto:dvchrnewsletter@gmail.com">dvchrnewsletter@gmail.com</a> at the earliest. Winners are decided on the number of correct answers and on a fastest-answer-first basis. Every entry must be accompanied by name, designation, department, place of posting, and photograph if possible. Winners and their answers will be featured in the next edition of the HR Newsletter.
+        </div>
+      </div>
+      <div class="winners">
+        <h3>🏆 Winners of the Last Business Quiz</h3>
+        <div class="winner">
+          <img src="images/winner-shampa.jpg" alt="Shampa Roy">
+          <div><b>Shampa Roy</b><span>Executive (Civil)<br>Barrage &amp; Irrigation</span></div>
+          <div class="medal">🎉</div>
+        </div>
+        <div class="winner">
+          <img src="images/winner-vivek.jpg" alt="Vivek Singh">
+          <div><b>Vivek Singh</b><span>Manager (HR)<br>Panchet</span></div>
+          <div class="medal">🎉</div>
+        </div>
+        <div class="winner">
+          <img src="images/winner-shubham.jpg" alt="Shubham Mishra">
+          <div><b>Shubham Mishra</b><span>Assistant Manager (IT)<br>Kolkata</span></div>
+          <div class="medal">🎉</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTRIBUTE ================= -->
+<section class="section" id="contribute">
+  <div class="wrap">
+    <div class="contrib">
+      <div class="contrib-grid">
+        <div class="pad">
+          <h2>✍️ Be a Part of MY DVC – MY VOICE</h2>
+          <p>We hope you enjoy going through this edition as much as we enjoyed creating it for you! Our team is committed to bringing you meaningful and engaging content, and we truly value your thoughts, ideas, and creativity — so keep them coming!</p>
+          <p style="margin-top:10px">All DVC employees are invited to contribute to the HR Newsletter. Share your experiences, achievements, ideas, photographs, or news from your station in English or Hindi.</p>
+          <ul>
+            <li>Articles: up to 250 words in Word format</li>
+            <li>Selected entries are featured along with the contributor's photograph</li>
+            <li>Please mention your name, designation, department, and place of posting</li>
+            <li>Entries are shortlisted by the Editorial Team</li>
+            <li>💬 Have suggestions to make the newsletter better? We'd love to hear from you!</li>
+          </ul>
+          <p><b>Send your contributions and feedback by the 22nd of every month to:</b></p>
+          <a class="email" href="mailto:dvchrnewsletter@gmail.com">📩 dvchrnewsletter@gmail.com</a>
+          <p style="margin-top:20px;font-size:.85rem;opacity:.85">🎬 Behind the Scenes: Buddhagaya Bharat Sorode, Monalisa, Rakhi Kumari</p>
+        </div>
+        <figure class="contrib-photo" role="img" aria-label="Yoga Day at DVC DSTPS">
+          <figcaption style="margin-top:auto">📖 DVC, DSTPS</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="values"><img src="images/values-strip.png" alt="DVC values — People, Integrity, Collaboration, Excellence"></div>
+  <div class="foot-title">MY DVC – MY VOICE · HR Newsletter · June 2026</div>
+  <div>Damodar Valley Corporation · First published August 2012</div>
+  <div class="disclaimer">Disclaimer: This publication is the intellectual property of Damodar Valley Corporation. · 📖 Happy Reading!</div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<dialog class="lightbox" id="lightbox">
+  <button class="close" aria-label="Close" onclick="document.getElementById('lightbox').close()">×</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="caption-bar" id="lightbox-cap"></div>
+</dialog>
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-cap');
+  document.querySelectorAll('a.zoom').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      lbImg.src = a.getAttribute('href');
+      const inner = a.querySelector('img');
+      lbCap.textContent = inner ? (inner.alt || '') : '';
+      lb.showModal();
+    });
+  });
+  lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+</script>
+
+</body>
+</html>
