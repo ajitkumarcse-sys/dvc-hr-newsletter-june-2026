@@ -48,16 +48,16 @@
 
   Auth.onChange(() => {
     if (Auth.unavailable) {
-      return showGate('<div class="gate-ico">⚠️</div><h2>Service unavailable</h2><p class="muted">The login service could not be loaded. Please check your connection and refresh.</p>');
+      return showGate('<div class="gate-ico" data-icon="warning" aria-hidden="true"></div><h2>Service unavailable</h2><p class="muted">The login service could not be loaded. Please check your connection and refresh.</p>');
     }
     if (!Auth.user) {
       state.loadedFor = null;
-      return showGate(`<div class="gate-ico">🔐</div><h2>Editors only</h2>
+      return showGate(`<div class="gate-ico" data-icon="lock" aria-hidden="true"></div><h2>Editors only</h2>
         <p class="muted">Log in with an editor account to review article submissions and quiz entries.</p>
         <button class="btn btn-primary" type="button" data-open-auth="login">Log in</button>`);
     }
     if (!Auth.isEditor) {
-      return showGate(`<div class="gate-ico">🚫</div><h2>No editor access</h2>
+      return showGate(`<div class="gate-ico" data-icon="block" aria-hidden="true"></div><h2>No editor access</h2>
         <p class="muted">Your account (${esc(Auth.user.email)}) is not on the editor list. Ask the newsletter administrator to add your email, then refresh this page.</p>
         <a class="btn btn-secondary" href="index.html">← Back to the newsletter</a>`);
     }

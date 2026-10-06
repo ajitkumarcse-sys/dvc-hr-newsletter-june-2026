@@ -142,9 +142,9 @@
           <b>${esc(name)}${Auth.isEditor ? '<span class="role-badge">Editor</span>' : ''}</b>
           <span>${esc(Auth.user.email)}</span>
         </div>
-        <a href="${esc(homeUrl())}#account" data-action="account" role="menuitem">👤 My profile &amp; submissions</a>
-        ${Auth.isEditor ? '<a href="dashboard.html" role="menuitem">🗂️ Editor dashboard</a>' : ''}
-        <button type="button" data-action="logout" role="menuitem">↪ Log out</button>
+        <a href="${esc(homeUrl())}#account" data-action="account" role="menuitem"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-user"/></svg>My profile &amp; submissions</a>
+        ${Auth.isEditor ? '<a href="dashboard.html" role="menuitem"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-folder"/></svg>Editor dashboard</a>' : ''}
+        <button type="button" data-action="logout" role="menuitem"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-logout"/></svg>Log out</button>
       </div>`;
   }
 
@@ -202,7 +202,7 @@
           </div>
           <div class="field">
             <label for="liPass">Password <span class="req">*</span></label>
-            <input id="liPass" name="password" type="password" autocomplete="current-password" required>
+            <div class="pw-wrap"><input id="liPass" name="password" type="password" autocomplete="current-password" required><button type="button" class="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button></div>
           </div>
           <button class="btn btn-primary btn-block" type="submit">Log in</button>
           <div style="text-align:center"><button type="button" class="link-btn" data-goto="forgot">Forgot password?</button></div>
@@ -238,12 +238,12 @@
           </div>
           <div class="field">
             <label for="rgPass">Password <span class="req">*</span></label>
-            <input id="rgPass" name="password" type="password" required minlength="8" autocomplete="new-password">
+            <div class="pw-wrap"><input id="rgPass" name="password" type="password" required minlength="8" autocomplete="new-password"><button type="button" class="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button></div>
             <div class="hint"><span>At least 8 characters</span></div>
           </div>
           <div class="field">
             <label for="rgPass2">Confirm password <span class="req">*</span></label>
-            <input id="rgPass2" name="password2" type="password" required minlength="8" autocomplete="new-password">
+            <div class="pw-wrap"><input id="rgPass2" name="password2" type="password" required minlength="8" autocomplete="new-password"><button type="button" class="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button></div>
           </div>
           <button class="btn btn-primary btn-block full" type="submit">Create account</button>
         </div>
@@ -266,11 +266,11 @@
         <div class="form-grid">
           <div class="field">
             <label for="rsPass">New password <span class="req">*</span></label>
-            <input id="rsPass" name="password" type="password" required minlength="8" autocomplete="new-password">
+            <div class="pw-wrap"><input id="rsPass" name="password" type="password" required minlength="8" autocomplete="new-password"><button type="button" class="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button></div>
           </div>
           <div class="field">
             <label for="rsPass2">Confirm new password <span class="req">*</span></label>
-            <input id="rsPass2" name="password2" type="password" required minlength="8" autocomplete="new-password">
+            <div class="pw-wrap"><input id="rsPass2" name="password2" type="password" required minlength="8" autocomplete="new-password"><button type="button" class="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button></div>
           </div>
           <button class="btn btn-primary btn-block" type="submit">Update password</button>
         </div>
@@ -292,7 +292,10 @@
     modal.querySelectorAll('form[data-view]').forEach((f) => f.classList.toggle('hidden', f.dataset.view !== view));
     const tabs = modal.querySelector('#authTabs');
     tabs.classList.toggle('hidden', !(view === 'login' || view === 'register'));
-    tabs.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b.dataset.tab === view));
+    tabs.querySelectorAll('button').forEach((b) => {
+      b.classList.toggle('active', b.dataset.tab === view);
+      b.setAttribute('aria-selected', b.dataset.tab === view ? 'true' : 'false');
+    });
     modal.querySelector('#authTitle').textContent = TITLES[view];
     hideAlert();
   }
@@ -312,6 +315,17 @@
     return out;
   }
 
+  // Password show/hide: flips the input between password and text. The toggles are
+  // type="button", so they never submit, never become withBusy's target, and send no form value.
+  function setPasswordVisible(btn, visible) {
+    const input = btn.parentElement && btn.parentElement.querySelector('input');
+    if (!input) return;
+    input.type = visible ? 'text' : 'password';
+    btn.textContent = visible ? 'Hide' : 'Show';
+    btn.setAttribute('aria-pressed', visible ? 'true' : 'false');
+    btn.setAttribute('aria-label', visible ? 'Hide password' : 'Show password');
+  }
+
   function setupModal() {
     document.body.insertAdjacentHTML('beforeend', MODAL_HTML);
     modal = document.getElementById('authModal');
@@ -323,6 +337,16 @@
       if (tab) showView(tab.dataset.tab);
       const go = e.target.closest('[data-goto]');
       if (go) showView(go.dataset.goto);
+    });
+
+    // One delegated listener for all five password toggles.
+    modal.addEventListener('click', (e) => {
+      const btn = e.target.closest('.pw-toggle');
+      if (btn) setPasswordVisible(btn, btn.getAttribute('aria-pressed') !== 'true');
+    });
+    // Never leave a password on show once the dialog is dismissed.
+    modal.addEventListener('close', () => {
+      modal.querySelectorAll('.pw-toggle[aria-pressed="true"]').forEach((b) => setPasswordVisible(b, false));
     });
 
     const loginForm = document.getElementById('loginForm');

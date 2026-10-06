@@ -1,0 +1,364 @@
+{
+ "ai-banner.jpg": {
+  "w": 516,
+  "h": 207,
+  "variants": [
+   480,
+   516
+  ]
+ },
+ "ai-certificate.png": {
+  "w": 368,
+  "h": 400,
+  "variants": [
+   368
+  ]
+ },
+ "archery-1.jpg": {
+  "w": 1080,
+  "h": 720,
+  "variants": [
+   480,
+   800,
+   1080
+  ]
+ },
+ "archery-2.jpg": {
+  "w": 728,
+  "h": 546,
+  "variants": [
+   480,
+   728
+  ]
+ },
+ "archery-3.jpg": {
+  "w": 1280,
+  "h": 960,
+  "variants": [
+   480,
+   800,
+   1200,
+   1280
+  ]
+ },
+ "ashok-kapoor.jpg": {
+  "w": 227,
+  "h": 289,
+  "variants": [
+   227
+  ]
+ },
+ "blood-1.jpg": {
+  "w": 802,
+  "h": 601,
+  "variants": [
+   480,
+   800,
+   802
+  ]
+ },
+ "blood-2.jpg": {
+  "w": 900,
+  "h": 1200,
+  "variants": [
+   480,
+   800,
+   900
+  ]
+ },
+ "csr-school-1.jpg": {
+  "w": 826,
+  "h": 493,
+  "variants": [
+   480,
+   800,
+   826
+  ]
+ },
+ "csr-school-2.jpg": {
+  "w": 552,
+  "h": 414,
+  "variants": [
+   480,
+   552
+  ]
+ },
+ "csr-school-3.jpg": {
+  "w": 826,
+  "h": 382,
+  "variants": [
+   480,
+   800,
+   826
+  ]
+ },
+ "csr-school-4.jpg": {
+  "w": 554,
+  "h": 668,
+  "variants": [
+   480,
+   554
+  ]
+ },
+ "dvc-logo.jpg": {
+  "w": 183,
+  "h": 228,
+  "variants": [
+   183
+  ]
+ },
+ "env-cycle.jpg": {
+  "w": 1600,
+  "h": 728,
+  "variants": [
+   480,
+   800,
+   1200,
+   1600
+  ]
+ },
+ "env-march.jpg": {
+  "w": 601,
+  "h": 220,
+  "variants": [
+   480,
+   601
+  ]
+ },
+ "health-poster.png": {
+  "w": 511,
+  "h": 642,
+  "variants": [
+   480,
+   511
+  ]
+ },
+ "og-cover.jpg": {
+  "w": 1200,
+  "h": 630,
+  "variants": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "pawan-kumar.jpg": {
+  "w": 583,
+  "h": 700,
+  "variants": [
+   480,
+   583
+  ]
+ },
+ "poem1-col1.png": {
+  "w": 169,
+  "h": 330,
+  "variants": [
+   169
+  ]
+ },
+ "poem1-col2.png": {
+  "w": 162,
+  "h": 447,
+  "variants": [
+   162
+  ]
+ },
+ "poem1-title.png": {
+  "w": 299,
+  "h": 59,
+  "variants": [
+   299
+  ]
+ },
+ "poem2.png": {
+  "w": 317,
+  "h": 487,
+  "variants": [
+   317
+  ]
+ },
+ "polio.jpg": {
+  "w": 928,
+  "h": 491,
+  "variants": [
+   480,
+   800,
+   928
+  ]
+ },
+ "safety-1.jpg": {
+  "w": 1080,
+  "h": 720,
+  "variants": [
+   480,
+   800,
+   1080
+  ]
+ },
+ "safety-2.jpg": {
+  "w": 623,
+  "h": 514,
+  "variants": [
+   480,
+   623
+  ]
+ },
+ "safety-3.jpg": {
+  "w": 696,
+  "h": 513,
+  "variants": [
+   480,
+   696
+  ]
+ },
+ "safety-4.jpg": {
+  "w": 1080,
+  "h": 720,
+  "variants": [
+   480,
+   800,
+   1080
+  ]
+ },
+ "safety-5.jpg": {
+  "w": 1080,
+  "h": 720,
+  "variants": [
+   480,
+   800,
+   1080
+  ]
+ },
+ "samvad-launch.jpg": {
+  "w": 1491,
+  "h": 532,
+  "variants": [
+   480,
+   800,
+   1200,
+   1491
+  ]
+ },
+ "sapling.jpg": {
+  "w": 512,
+  "h": 512,
+  "variants": [
+   480,
+   512
+  ]
+ },
+ "tb-kits.jpg": {
+  "w": 864,
+  "h": 562,
+  "variants": [
+   480,
+   800,
+   864
+  ]
+ },
+ "values-strip.png": {
+  "w": 1221,
+  "h": 178,
+  "variants": [
+   480,
+   800,
+   1200,
+   1221
+  ]
+ },
+ "waste-to-worth.jpg": {
+  "w": 1156,
+  "h": 693,
+  "variants": [
+   480,
+   800,
+   1156
+  ]
+ },
+ "winner-shampa.jpg": {
+  "w": 259,
+  "h": 317,
+  "variants": [
+   259
+  ]
+ },
+ "winner-shubham.jpg": {
+  "w": 346,
+  "h": 385,
+  "variants": [
+   346
+  ]
+ },
+ "winner-vivek.jpg": {
+  "w": 247,
+  "h": 315,
+  "variants": [
+   247
+  ]
+ },
+ "yoga-1.jpg": {
+  "w": 740,
+  "h": 405,
+  "variants": [
+   480,
+   740
+  ]
+ },
+ "yoga-2.jpg": {
+  "w": 1600,
+  "h": 900,
+  "variants": [
+   480,
+   800,
+   1200,
+   1600
+  ]
+ },
+ "yoga-3.jpg": {
+  "w": 1600,
+  "h": 900,
+  "variants": [
+   480,
+   800,
+   1200,
+   1600
+  ]
+ },
+ "yoga-4.jpg": {
+  "w": 715,
+  "h": 409,
+  "variants": [
+   480,
+   715
+  ]
+ },
+ "yoga-5.jpg": {
+  "w": 725,
+  "h": 478,
+  "variants": [
+   480,
+   725
+  ]
+ },
+ "yoga-6.jpg": {
+  "w": 1600,
+  "h": 1068,
+  "variants": [
+   480,
+   800,
+   1200,
+   1600
+  ]
+ },
+ "yoga-dstps.jpg": {
+  "w": 1800,
+  "h": 1201,
+  "variants": [
+   480,
+   800,
+   1200,
+   1600
+  ]
+ }
+}

@@ -14,7 +14,33 @@ and quiz submission, backed by [Supabase](https://supabase.com) (auth, database,
 - `js/auth.js` — login / register / password reset, shared by both pages
 - `js/main.js` — quiz + article submission on the newsletter page
 - `js/dashboard.js` — editor dashboard
+- `js/editorial.js` — reading settings (text size, Day/Night theme, reduce motion), contents drawer,
+  scroll-spy, photo viewer with gallery stepping, before/after slider, quiz tally, share/copy
+- `accessibility.html`, `privacy.html` — accessibility statement and privacy notice
 - `supabase/schema.sql` — database tables, row-level security, storage bucket
+- `tools/build_images.py` — responsive image pipeline (see below)
+
+## Design system ("The Valley Folio")
+
+- Colours: DVC's official Marine Blue `#0066B3` (Corporate Identity Manual) with derived shades, one warm
+  accent (burnt saffron `#A84700`), newsprint paper. A full Night edition re-points the same tokens.
+- Type: Eczar (headlines, English + Devanagari), Noto Sans (body/UI, same family as dvc.gov.in),
+  Tiro Devanagari Hindi (poems only). Every Hindi passage carries `lang="hi"`.
+- Standards: WCAG 2.2 AA contrast verified in both themes; skip link, keyboard and reduced-motion support;
+  GIGW-style footer (lineage, contact, policies, last-updated date).
+
+## Adding photos
+
+Put the original photo in `images/`, write a plain tag in the HTML —
+`<img src="images/NAME.jpg" alt="…" data-sizes="(max-width: 767px) 100vw, 50vw">` — then run:
+
+```bash
+python tools/build_images.py
+```
+
+It creates AVIF + WebP versions in `images/opt/` (480–1600 px), wraps the tag in a responsive `<picture>`
+with exact dimensions and lazy loading, and points photo-viewer links at the optimized file.
+Add `data-priority` to the one hero image; add `data-keep` to leave an image untouched.
 
 ## One-time Supabase setup (dashboard → project `dvc-hr-newsletter`)
 

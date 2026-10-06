@@ -9,6 +9,9 @@
   const QUESTIONS = cfg.QUIZ_QUESTIONS;
   const STATUS_LABEL = { pending: 'Under review', shortlisted: 'Shortlisted', not_selected: 'Not selected' };
   const IMAGE_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+  // Jump instead of gliding when the reader (OS setting) or the site switch asks for reduced motion.
+  const scrollBehavior = () => ((document.documentElement.getAttribute('data-motion') === 'reduce'
+    || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) ? 'auto' : 'smooth');
 
   function setAlert(el, type, msg) {
     el.className = 'alert alert-' + type;
@@ -49,7 +52,7 @@
 
     if (sub) {
       quizInputs.forEach((inp, i) => { inp.value = sub.answers[i] || ''; inp.readOnly = true; inp.disabled = false; });
-      setAlert(quizAlert, 'success', `✅ Your answers were received on ${fmtDate(sub.submitted_at)}. Winners will be featured in the next edition — good luck!`);
+      setAlert(quizAlert, 'success', `Your answers were received on ${fmtDate(sub.submitted_at)}. Winners will be featured in the next edition — good luck!`);
       quizSubmit.classList.add('hidden');
       return;
     }
@@ -115,8 +118,8 @@
       quizState.submission = data;
       store.del(QUIZ_DRAFT);
       renderQuiz();
-      quizAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      toast('🎉 Your quiz answers have been submitted. Good luck!');
+      quizAlert.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
+      toast('Your quiz answers have been submitted. Good luck!');
     });
   });
 
@@ -235,8 +238,8 @@
       resetAuthorPhoto();
       store.del(ART_DRAFT);
       updateWordCount();
-      setAlert(artAlert, 'success', `🎉 Thank you! “${title}” has been sent to the Editorial Team. Track its status under “My profile & submissions”.`);
-      artAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setAlert(artAlert, 'success', `Thank you! “${title}” has been sent to the Editorial Team. Track its status under “My profile & submissions”.`);
+      artAlert.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
       toast('Article submitted successfully!');
     });
   });
