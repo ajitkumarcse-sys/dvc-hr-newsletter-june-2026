@@ -4,223 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MY DVC – MY VOICE | HR Newsletter · June 2026</title>
-<style>
-  :root{
-    --navy:#14264c;
-    --navy-2:#1d3461;
-    --teal:#0e7c86;
-    --teal-light:#e0f2f4;
-    --gold:#e8a33d;
-    --ink:#243040;
-    --muted:#5c6b80;
-    --paper:#f6f8fb;
-    --card:#ffffff;
-    --line:#e3e9f1;
-    --radius:14px;
-    --shadow:0 2px 14px rgba(20,38,76,.08);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
-  img{max-width:100%;display:block}
-  a{color:var(--teal);text-decoration:none}
-  a:hover{text-decoration:underline}
-  section{scroll-margin-top:76px}
-
-  /* ---------- NAV ---------- */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(20,38,76,.97);backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(0,0,0,.25)}
-  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 20px}
-  .nav-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:.4px;white-space:nowrap}
-  .nav-brand img{width:34px;height:auto;border-radius:6px;background:#fff;padding:2px}
-  .nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
-  .nav-links a{color:#cfd9ec;font-size:.85rem;padding:7px 11px;border-radius:8px;white-space:nowrap}
-  .nav-links a:hover{background:rgba(255,255,255,.12);color:#fff;text-decoration:none}
-  .nav-toggle{display:none;margin-left:auto;background:none;border:0;color:#fff;cursor:pointer;padding:8px;border-radius:8px;flex-direction:column;gap:5px;width:42px}
-  .nav-toggle span{display:block;height:2.5px;width:22px;background:#fff;border-radius:2px;transition:.25s;margin:0 auto}
-
-  @media(max-width:820px){
-    .nav-inner{gap:10px;padding:10px 16px}
-    .nav-brand{font-size:.95rem}
-    .nav-toggle{display:flex}
-    .nav-links{
-      position:absolute;top:100%;left:0;right:0;
-      flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;gap:0;
-      background:rgba(16,30,60,.99);backdrop-filter:blur(8px);
-      padding:6px;margin:0;
-      max-height:0;overflow:hidden;
-      box-shadow:0 10px 24px rgba(0,0,0,.35);
-      transition:max-height .3s ease;
-    }
-    .nav.open .nav-links{max-height:80vh;overflow-y:auto;padding:8px 6px}
-    .nav-links a{font-size:1rem;padding:13px 14px;border-radius:10px;text-align:left}
-    .nav.open .nav-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-    .nav.open .nav-toggle span:nth-child(2){opacity:0}
-    .nav.open .nav-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{position:relative;color:#fff;overflow:hidden;background:var(--navy)}
-  .hero-bg{position:absolute;inset:0;background:url("images/yoga-dstps.jpg") center 35%/cover no-repeat;opacity:.28;filter:saturate(.8)}
-  .hero-grad{position:absolute;inset:0;background:linear-gradient(115deg,rgba(15,26,53,.96) 0%,rgba(20,38,76,.82) 55%,rgba(14,124,134,.55) 100%)}
-  .hero-inner{position:relative;max-width:1200px;margin:0 auto;padding:84px 20px 72px;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
-  .hero-logo{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
-  .hero-logo img{width:130px}
-  .hero-text .kicker{text-transform:uppercase;letter-spacing:3px;font-size:.8rem;color:#9fd6db;font-weight:600}
-  .hero-text h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:1px;margin:8px 0 6px;font-weight:800}
-  .hero-text .sub{font-size:1.15rem;color:#d8e2f3}
-  .hero-badges{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-  .hero-badges span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.85rem}
-  @media(max-width:600px){
-    .hero-inner{padding:40px 18px 44px;gap:24px}
-    .hero-logo{padding:14px}
-    .hero-logo img{width:92px}
-    .hero-text .sub{font-size:1.02rem}
-    .hero-badges span{font-size:.8rem;padding:5px 12px}
-    .section{padding:44px 0 22px}
-  }
-
-  /* ---------- LAYOUT ---------- */
-  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-  .section{padding:64px 0 30px}
-  .section-head{margin-bottom:28px}
-  .section-head .tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:10px}
-  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);font-weight:800}
-  .section-head p.lede{color:var(--muted);max-width:760px;margin-top:6px}
-
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-  .pad{padding:28px}
-  @media(min-width:760px){.pad{padding:36px}}
-
-  /* ---------- HIGHLIGHTS ---------- */
-  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:-38px;position:relative;z-index:5}
-  .tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;box-shadow:var(--shadow);transition:transform .15s}
-  .tile:hover{transform:translateY(-3px);text-decoration:none}
-  .tile .t-ico{font-size:1.4rem}
-  .tile b{display:block;color:var(--navy);margin:6px 0 2px}
-  .tile span{font-size:.83rem;color:var(--muted)}
-
-  /* ---------- EDITORS ---------- */
-  .editors-grid{display:grid;gap:24px}
-  @media(min-width:900px){.editors-grid{grid-template-columns:2.1fr 1fr}}
-  .letter p{margin-bottom:14px}
-  .letter .drop::first-letter{font-size:3.1em;font-weight:800;float:left;line-height:.85;padding:4px 10px 0 0;color:var(--teal)}
-  .signoff{font-weight:700;color:var(--navy);margin-top:18px}
-  .masthead h3{color:var(--navy);font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
-  .masthead ul{list-style:none;margin-bottom:22px}
-  .masthead li{padding:7px 0;border-bottom:1px dashed var(--line)}
-  .masthead li b{color:var(--navy);display:block;font-size:.95rem}
-  .masthead li span{font-size:.83rem;color:var(--muted)}
-  .masthead .since{background:var(--teal-light);border-radius:10px;padding:12px 16px;font-size:.9rem;color:var(--teal);font-weight:600;text-align:center}
-
-  /* ---------- ARTICLES ---------- */
-  .article h3{color:var(--navy);font-size:1.35rem;margin-bottom:4px}
-  .article .byline{color:var(--muted);font-size:.9rem;margin-bottom:16px;font-style:italic}
-  .article p{margin-bottom:13px}
-  .article h4{color:var(--teal);margin:20px 0 8px;font-size:1.05rem}
-  .article ul{margin:0 0 14px 22px}
-  .article li{margin-bottom:6px}
-  .banner-img{border-radius:12px;overflow:hidden;margin-bottom:22px}
-  .lifecycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 22px}
-  .life-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
-  .life-card .ico{width:38px;height:38px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:10px}
-  .life-card b{color:var(--navy);display:block;margin-bottom:4px;font-size:.95rem}
-  .life-card p{font-size:.86rem;color:var(--muted);margin:0}
-  .pullquote{border-left:4px solid var(--gold);background:#fdf6ea;padding:18px 22px;border-radius:0 12px 12px 0;font-size:1.08rem;font-style:italic;color:var(--navy);margin:22px 0 6px}
-  .fig{max-width:420px;margin:10px auto 6px}
-  .fig figcaption{text-align:center;font-size:.82rem;color:var(--muted);padding-top:8px}
-  .two-col{display:grid;gap:28px;align-items:start}
-  @media(min-width:900px){.two-col{grid-template-columns:1.4fr 1fr}}
-
-  .keypoints{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0}
-  .kp{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
-  .kp b{color:var(--navy);display:block;margin-bottom:6px}
-  .kp ul{margin-left:18px}
-  .kp li{font-size:.88rem;margin-bottom:4px}
-
-  /* ---------- GALLERIES ---------- */
-  .gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .gallery a{border-radius:10px;overflow:hidden;display:block;position:relative;background:#dde5ef}
-  .gallery img{width:100%;height:200px;object-fit:cover;transition:transform .25s;cursor:zoom-in}
-  .gallery a:hover img{transform:scale(1.04)}
-  .gallery.tall img{height:250px}
-
-  /* ---------- EVENT BLOCKS ---------- */
-  .event{margin-bottom:44px}
-  .event-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-  .event-head h3{color:var(--navy);font-size:1.3rem}
-  .event-head .date{background:var(--navy);color:#fff;font-size:.75rem;padding:4px 12px;border-radius:999px;letter-spacing:.5px}
-  .event .theme{color:var(--teal);font-weight:600;font-size:.95rem;margin-bottom:10px}
-  .event p{margin-bottom:12px}
-
-  /* ---------- EMPLOYEE CORNER ---------- */
-  .poems{display:grid;gap:24px}
-  @media(min-width:960px){.poems{grid-template-columns:1fr 1fr}}
-  .poem-card{background:linear-gradient(180deg,#fffdf7,#fff);border:1px solid #eee3c8;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
-  .poem-imgs{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .poem-imgs img{max-height:430px;width:auto;border-radius:8px}
-  .poet{display:flex;gap:14px;align-items:center;margin-top:16px;border-top:1px dashed #e3d9bd;padding-top:16px}
-  .poet img{width:74px;height:88px;object-fit:cover;border-radius:10px;border:2px solid var(--teal-light)}
-  .poet b{color:var(--navy);display:block}
-  .poet span{font-size:.85rem;color:var(--muted);display:block;line-height:1.45}
-
-  /* ---------- CSR ---------- */
-  .csr-grid{display:grid;gap:22px}
-  @media(min-width:860px){.csr-grid{grid-template-columns:1fr 1fr}}
-  .csr-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-  .csr-card .csr-media{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-  .csr-card .csr-media.single{grid-template-columns:1fr}
-  .csr-card .csr-media a{display:block}
-  .csr-card .csr-media img{height:210px;width:100%;object-fit:cover;cursor:zoom-in}
-  .csr-card .csr-body{padding:22px 24px 24px}
-  .csr-card h3{color:var(--navy);font-size:1.1rem;margin-bottom:8px}
-  .csr-card p{font-size:.93rem;color:#37455c}
-  .stat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-  .stat-chips span{background:var(--teal-light);color:var(--teal);font-weight:700;font-size:.8rem;padding:4px 12px;border-radius:999px}
-
-  /* ---------- HEALTH ---------- */
-  .health-flex{display:grid;gap:28px;align-items:center}
-  @media(min-width:860px){.health-flex{grid-template-columns:1fr 1.2fr}}
-  .health-poster{max-width:430px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-  .health-tips li{margin-bottom:8px}
-
-  /* ---------- QUIZ ---------- */
-  .quiz-wrap{display:grid;gap:26px}
-  @media(min-width:960px){.quiz-wrap{grid-template-columns:1.5fr 1fr}}
-  .quiz-list{counter-reset:q;list-style:none}
-  .quiz-list li{counter-increment:q;position:relative;padding:13px 16px 13px 56px;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;font-size:.95rem}
-  .quiz-list li::before{content:counter(q,decimal-leading-zero);position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:800;color:var(--teal);font-size:1rem}
-  .quiz-rules{background:#fdf6ea;border:1px solid #efdbb2;border-radius:12px;padding:18px 20px;font-size:.9rem;margin-top:14px}
-  .winners h3{color:var(--navy);margin-bottom:14px}
-  .winner{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
-  .winner img{width:64px;height:76px;object-fit:cover;border-radius:10px}
-  .winner b{color:var(--navy);display:block}
-  .winner span{font-size:.84rem;color:var(--muted)}
-  .winner .medal{margin-left:auto;font-size:1.4rem}
-
-  /* ---------- CONTRIBUTE / FOOTER ---------- */
-  .contrib{background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 60%,var(--teal) 130%);color:#dfe8f6;border-radius:var(--radius);overflow:hidden}
-  .contrib-grid{display:grid;gap:0}
-  @media(min-width:900px){.contrib-grid{grid-template-columns:1.2fr 1fr}}
-  .contrib .pad h2{color:#fff;margin-bottom:12px;font-size:1.5rem}
-  .contrib ul{list-style:none;margin:14px 0}
-  .contrib li{padding:6px 0 6px 26px;position:relative;font-size:.94rem}
-  .contrib li::before{content:"✦";position:absolute;left:2px;color:var(--gold)}
-  .contrib .email{display:inline-block;background:#fff;color:var(--navy);font-weight:700;padding:10px 20px;border-radius:999px;margin-top:10px}
-  .contrib .email:hover{text-decoration:none;background:var(--gold);color:#fff}
-  .contrib-photo{min-height:280px;background:url("images/yoga-dstps.jpg") center/cover;display:flex;flex-direction:column;justify-content:flex-end}
-  .contrib-photo figcaption{background:rgba(15,26,53,.75);color:#cfd9ec;font-size:.8rem;padding:6px 14px;text-align:right}
-  footer{background:#0f1a35;color:#8fa1c0;padding:34px 20px;text-align:center;font-size:.85rem;margin-top:70px}
-  footer .values{max-width:760px;margin:0 auto 20px;background:#fff;border-radius:12px;padding:10px}
-  footer .foot-title{color:#fff;font-weight:700;letter-spacing:1px;margin-bottom:6px}
-  footer .disclaimer{margin-top:14px;font-size:.78rem;opacity:.75}
-
-  /* ---------- LIGHTBOX ---------- */
-  dialog.lightbox{border:none;background:rgba(10,16,32,.92);padding:0;max-width:92vw;max-height:92vh;border-radius:12px;outline:none}
-  dialog.lightbox::backdrop{background:rgba(8,12,24,.8)}
-  dialog.lightbox img{max-width:92vw;max-height:86vh;width:auto;height:auto;object-fit:contain;margin:0 auto}
-  dialog.lightbox .close{position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1}
-  .caption-bar{color:#cbd6ea;text-align:center;font-size:.85rem;padding:8px 16px}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -231,9 +15,6 @@
       <img src="images/dvc-logo.jpg" alt="DVC logo">
       MY DVC – MY VOICE
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
     <div class="nav-links" id="navLinks">
       <a href="#editors">Editors' Desk</a>
       <a href="#insights">HR Insights</a>
@@ -243,8 +24,12 @@
       <a href="#csr">CSR</a>
       <a href="#health">Health</a>
       <a href="#quiz">Quiz</a>
-      <a href="#contribute">Contribute</a>
+      <a href="#submit">Submit Article</a>
     </div>
+    <div class="nav-auth" id="navAuth"></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -659,23 +444,25 @@
       <p class="lede">Rely on your own knowledge — no Google search or AI tools while answering. Let's keep the challenge fun and fair!</p>
     </div>
     <div class="quiz-wrap">
-      <div>
-        <ol class="quiz-list">
-          <li>What is India's target for achieving 500 GW of non-fossil fuel-based installed electricity capacity?</li>
-          <li>Which Maharatna PSU announced plans to invest over ₹2 lakh crore in renewable energy projects in Madhya Pradesh?</li>
-          <li>Which NTPC subsidiary is leading the company's renewable energy expansion across India?</li>
-          <li>Which Government of India scheme promotes the installation of rooftop solar systems for households?</li>
-          <li>Which organization serves as the central nodal agency for implementing many of India's renewable energy power procurement schemes?</li>
-          <li>Which transmission PSU has been allocated one of the largest capital expenditure plans among power PSUs for FY 2025–26?</li>
-          <li>What is the primary purpose of a Battery Energy Storage System (BESS) being deployed across India's power sector?</li>
-          <li>Which renewable energy technology is increasingly being promoted alongside solar and wind to support round-the-clock power supply?</li>
-          <li>Which Government ministry is responsible for overseeing India's power sector and Central Public Sector Enterprises such as NTPC, NHPC, and POWERGRID?</li>
-          <li>Which clean fuel is being actively promoted by India for decarbonizing industries such as steel, fertilizer, refining, and power?</li>
-        </ol>
-        <div class="quiz-rules">
-          <b>📬 How to participate:</b> All DVC employees eager to participate may send their answers to <a href="mailto:dvchrnewsletter@gmail.com">dvchrnewsletter@gmail.com</a> at the earliest. Winners are decided on the number of correct answers and on a fastest-answer-first basis. Every entry must be accompanied by name, designation, department, place of posting, and photograph if possible. Winners and their answers will be featured in the next edition of the HR Newsletter.
+      <form id="quizForm" novalidate>
+        <div class="gate hidden" id="quizGate">
+          <div class="gate-ico">🔐</div>
+          <p><b>Log in to submit your answers.</b> You can start typing now — your answers are kept on this device until you submit.</p>
+          <div class="gate-actions">
+            <button class="btn btn-primary btn-sm" type="button" data-open-auth="login">Log in</button>
+            <button class="btn btn-secondary btn-sm" type="button" data-open-auth="register">Register</button>
+          </div>
         </div>
-      </div>
+        <div class="alert hidden" id="quizAlert" role="status"></div>
+        <ol class="quiz-list" id="quizList"></ol>
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="submit" id="quizSubmit">Submit my answers</button>
+          <span class="quiz-status" id="quizStatus"></span>
+        </div>
+        <div class="quiz-rules">
+          <b>📬 How to participate:</b> Log in, answer the questions above and press <b>Submit</b> — you can submit once per quiz. Your name, designation, department and place of posting are attached automatically, and the submission time is recorded by the server. Winners are decided on the number of correct answers and on a fastest-answer-first basis, and will be featured in the next edition of the HR Newsletter. Prefer email? Send your answers with your details to <a href="mailto:dvchrnewsletter@gmail.com">dvchrnewsletter@gmail.com</a>.
+        </div>
+      </form>
       <div class="winners">
         <h3>🏆 Winners of the Last Business Quiz</h3>
         <div class="winner">
@@ -698,6 +485,98 @@
   </div>
 </section>
 
+<!-- ================= SUBMIT AN ARTICLE ================= -->
+<section class="section" id="submit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">✍️ Submit Online</span>
+      <h2>Share Your Story with MY DVC – MY VOICE</h2>
+      <p class="lede">Articles, achievements, poems, photographs or news from your station — in English or Hindi. Selected entries are featured in the newsletter.</p>
+    </div>
+    <div class="submit-grid">
+      <div class="card pad">
+        <div class="gate hidden" id="articleGate">
+          <div class="gate-ico">🔐</div>
+          <p><b>Log in to submit.</b> Your name, designation, department and place of posting are attached to your entry automatically. Your draft is kept on this device.</p>
+          <div class="gate-actions">
+            <button class="btn btn-primary btn-sm" type="button" data-open-auth="login">Log in</button>
+            <button class="btn btn-secondary btn-sm" type="button" data-open-auth="register">Register</button>
+          </div>
+        </div>
+        <div class="alert hidden" id="articleAlert" role="status"></div>
+        <form id="articleForm" novalidate>
+          <div class="form-grid two">
+            <div class="field full">
+              <label for="artTitle">Title <span class="req">*</span></label>
+              <input id="artTitle" name="title" required minlength="3" maxlength="200" placeholder="Give your entry a title">
+            </div>
+            <div class="field">
+              <label for="artCategory">Category <span class="req">*</span></label>
+              <select id="artCategory" name="category" required>
+                <option value="">Choose…</option>
+                <option>Article</option>
+                <option>Achievement</option>
+                <option>Poem / Creative</option>
+                <option>Photograph</option>
+                <option>Station News</option>
+                <option>Feedback / Suggestion</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="artLang">Language <span class="req">*</span></label>
+              <select id="artLang" name="language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi (हिंदी)</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="artContent">Your entry <span class="req">*</span></label>
+              <textarea id="artContent" name="content" required maxlength="4000" placeholder="Write up to 250 words. For a photograph, describe what it shows, where and when it was taken."></textarea>
+              <div class="hint"><span>Up to 250 words · English or Hindi</span><span id="wordCount">0 / 250 words</span></div>
+            </div>
+            <div class="field">
+              <label for="artPhoto">Photo for your entry <span class="muted">(optional)</span></label>
+              <div class="file-drop">
+                <img id="artPhotoPrev" class="hidden" alt="Selected photo preview">
+                <input id="artPhoto" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+              </div>
+              <div class="hint"><span>JPG, PNG or WebP · max 5 MB</span></div>
+            </div>
+            <div class="field">
+              <label for="artAuthorPhoto">Your photograph <span class="muted">(optional)</span></label>
+              <div class="file-drop">
+                <img id="artAuthorPhotoPrev" class="hidden" alt="Your photograph preview">
+                <input id="artAuthorPhoto" name="author_photo" type="file" accept="image/jpeg,image/png,image/webp">
+              </div>
+              <div class="hint"><span>Shown with your entry if selected</span></div>
+            </div>
+            <label class="check full">
+              <input type="checkbox" name="consent">
+              <span>I confirm this is my original work and I agree to it being edited and published in the DVC HR Newsletter.</span>
+            </label>
+            <div class="full quiz-actions">
+              <button class="btn btn-primary" type="submit" id="articleSubmit">Submit article</button>
+              <span class="quiz-status" id="articleStatus"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <aside class="card pad submit-aside">
+        <h3>📋 Submission guidelines</h3>
+        <ul>
+          <li>Up to 250 words, in English or Hindi</li>
+          <li>Original work only — articles, achievements, poems, photographs, station news</li>
+          <li>Add a clear photo, and your own photograph if you'd like it featured</li>
+          <li>Entries are shortlisted by the Editorial Team</li>
+          <li>Track the status of your entries under <b>My profile &amp; submissions</b></li>
+        </ul>
+        <div class="deadline">📅 Deadline: 22nd of every month</div>
+        <p class="muted" style="font-size:.88rem">Prefer email? Send your entry with your name, designation, department and place of posting to <a href="mailto:dvchrnewsletter@gmail.com">dvchrnewsletter@gmail.com</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONTRIBUTE ================= -->
 <section class="section" id="contribute">
   <div class="wrap">
@@ -714,8 +593,11 @@
             <li>Entries are shortlisted by the Editorial Team</li>
             <li>💬 Have suggestions to make the newsletter better? We'd love to hear from you!</li>
           </ul>
-          <p><b>Send your contributions and feedback by the 22nd of every month to:</b></p>
-          <a class="email" href="mailto:dvchrnewsletter@gmail.com">📩 dvchrnewsletter@gmail.com</a>
+          <p><b>Send your contributions and feedback by the 22nd of every month — online or by email:</b></p>
+          <div class="contrib-actions">
+            <a class="btn btn-gold" href="#submit">✍️ Submit online</a>
+            <a class="email" style="margin-top:0" href="mailto:dvchrnewsletter@gmail.com">📩 dvchrnewsletter@gmail.com</a>
+          </div>
           <p style="margin-top:20px;font-size:.85rem;opacity:.85">🎬 Behind the Scenes: Buddhagaya Bharat Sorode, Monalisa, Rakhi Kumari</p>
         </div>
         <figure class="contrib-photo" role="img" aria-label="Yoga Day at DVC DSTPS">
@@ -771,5 +653,57 @@
   });
 </script>
 
+<!-- ================= MY PROFILE & SUBMISSIONS ================= -->
+<dialog class="modal wide" id="accountModal" aria-labelledby="acctTitle">
+  <div class="modal-head">
+    <h3 id="acctTitle">👤 My profile &amp; submissions</h3>
+    <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="alert hidden" id="acctAlert" role="status"></div>
+    <form id="profileForm" novalidate>
+      <div class="form-grid two">
+        <div class="field">
+          <label for="pfName">Full name <span class="req">*</span></label>
+          <input id="pfName" name="full_name" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="pfEmail">Email</label>
+          <input id="pfEmail" name="email" type="email" readonly>
+        </div>
+        <div class="field">
+          <label for="pfDesig">Designation <span class="req">*</span></label>
+          <input id="pfDesig" name="designation" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="pfEmp">Employee no.</label>
+          <input id="pfEmp" name="employee_no" maxlength="40">
+        </div>
+        <div class="field">
+          <label for="pfDept">Department <span class="req">*</span></label>
+          <input id="pfDept" name="department" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="pfPost">Place of posting <span class="req">*</span></label>
+          <input id="pfPost" name="place_of_posting" required maxlength="120">
+        </div>
+        <div class="full"><button class="btn btn-primary btn-sm" type="submit">Save profile</button></div>
+      </div>
+    </form>
+    <div class="acct-section">
+      <h4>📝 My articles</h4>
+      <div class="sub-list" id="myArticles"></div>
+    </div>
+    <div class="acct-section">
+      <h4>⚡ My quiz entries</h4>
+      <div class="sub-list" id="myQuiz"></div>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

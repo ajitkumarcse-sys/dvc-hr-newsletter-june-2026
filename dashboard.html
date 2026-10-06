@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Editor Dashboard | MY DVC – MY VOICE</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html" style="text-decoration:none">
+      <img src="images/dvc-logo.jpg" alt="DVC logo">
+      MY DVC – MY VOICE
+    </a>
+    <a class="nav-back" href="index.html">← Newsletter</a>
+    <div class="nav-auth" id="navAuth"></div>
+  </div>
+</nav>
+
+<header class="dash-head">
+  <div class="wrap">
+    <div class="kicker">Editorial Team</div>
+    <h1>Editor Dashboard</h1>
+    <p>Review article submissions, see quiz entries in order of submission, and manage quiz editions.</p>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:60px">
+  <div class="card pad dash-gate hidden" id="dashGate"></div>
+
+  <div id="dashApp" class="hidden">
+    <div class="dash-stats">
+      <div class="stat"><b id="sTotal">–</b><span>Article submissions</span></div>
+      <div class="stat"><b id="sPending">–</b><span>Awaiting review</span></div>
+      <div class="stat"><b id="sQuiz">–</b><span id="sQuizLabel">Quiz entries</span></div>
+      <div class="stat"><b id="sMembers">–</b><span>Registered members</span></div>
+    </div>
+
+    <div class="dash-tabs" role="tablist">
+      <button type="button" class="active" data-tab="articles" role="tab" aria-selected="true">📝 Articles <span class="count" id="articleCount">0</span></button>
+      <button type="button" data-tab="quiz" role="tab" aria-selected="false">⚡ Quiz entries <span class="count" id="quizCount">0</span></button>
+      <button type="button" data-tab="members" role="tab" aria-selected="false">👥 Members <span class="count" id="memberCount">0</span></button>
+    </div>
+
+    <!-- ARTICLES -->
+    <section class="dash-panel" id="tab-articles">
+      <div class="toolbar">
+        <select id="fStatus" aria-label="Filter by status">
+          <option value="">All statuses</option>
+          <option value="pending" selected>Under review</option>
+          <option value="shortlisted">Shortlisted</option>
+          <option value="not_selected">Not selected</option>
+        </select>
+        <select id="fCategory" aria-label="Filter by category">
+          <option value="">All categories</option>
+          <option>Article</option>
+          <option>Achievement</option>
+          <option>Poem / Creative</option>
+          <option>Photograph</option>
+          <option>Station News</option>
+          <option>Feedback / Suggestion</option>
+        </select>
+        <input type="search" id="fSearch" placeholder="Search title, author, station…" aria-label="Search articles">
+        <span class="spacer"></span>
+        <button class="btn btn-secondary btn-sm" type="button" id="refreshBtn">↻ Refresh</button>
+        <button class="btn btn-secondary btn-sm" type="button" id="exportArticles">⬇ Export CSV</button>
+      </div>
+      <div id="articleList"></div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="dash-panel hidden" id="tab-quiz">
+      <div class="toolbar">
+        <label for="qEdition" class="muted" style="font-size:.88rem">Edition</label>
+        <select id="qEdition"></select>
+        <label class="toggle"><input type="checkbox" id="qOpen"> Accepting entries <span class="status" id="qOpenState"></span></label>
+        <span class="spacer"></span>
+        <button class="btn btn-secondary btn-sm" type="button" id="exportQuiz">⬇ Export CSV</button>
+      </div>
+      <p class="muted" style="font-size:.86rem;margin-bottom:12px">Entries are listed in the order they were received (the server records the time, so it can't be changed). Winners are decided on correct answers, then fastest submission.</p>
+      <div id="quizTable"></div>
+      <form class="new-edition" id="newEditionForm">
+        <b style="color:var(--navy);font-size:.9rem">➕ Start a new quiz edition</b>
+        <input id="neEdition" placeholder="YYYY-MM e.g. 2026-07" maxlength="7" required aria-label="Edition (YYYY-MM)">
+        <input id="neTitle" placeholder="Title (optional)" maxlength="120" aria-label="Edition title" style="flex:1;min-width:180px">
+        <button class="btn btn-primary btn-sm" type="submit">Create &amp; open</button>
+      </form>
+    </section>
+
+    <!-- MEMBERS -->
+    <section class="dash-panel hidden" id="tab-members">
+      <div class="toolbar">
+        <input type="search" id="mSearch" placeholder="Search name, email, station…" aria-label="Search members">
+        <span class="spacer"></span>
+        <button class="btn btn-secondary btn-sm" type="button" id="exportMembers">⬇ Export CSV</button>
+      </div>
+      <div id="memberTable"></div>
+    </section>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
