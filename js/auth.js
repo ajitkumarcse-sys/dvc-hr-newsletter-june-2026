@@ -11,7 +11,7 @@
   const fmtDate = (iso, withTime = true) => {
     if (!iso) return '';
     const opts = withTime
-      ? { dateStyle: 'medium', timeStyle: 'medium', timeZone: 'Asia/Kolkata' }
+      ? { dateStyle: 'medium', timeStyle: 'medium', hourCycle: 'h23', timeZone: 'Asia/Kolkata' }
       : { dateStyle: 'medium', timeZone: 'Asia/Kolkata' };
     return new Intl.DateTimeFormat('hi-IN', opts).format(new Date(iso)) + (withTime ? ' भा.मा.स.' : '');
   };
@@ -50,7 +50,8 @@
     }
     if (/rate limit|too many/i.test(m) || error?.status === 429) return 'बहुत अधिक प्रयास किए गए हैं। कृपया कुछ मिनट रुककर पुनः प्रयास करें।';
     if (/failed to fetch|network/i.test(m)) return 'सर्वर से संपर्क नहीं हो सका। अपना इंटरनेट कनेक्शन जाँचें और पुनः प्रयास करें।';
-    return m;
+    console.warn('Unmapped error:', m);
+    return 'कुछ गड़बड़ हो गई। कृपया कुछ देर बाद पुनः प्रयास करें। (' + m + ')';
   }
 
   async function withBusy(form, fn) {

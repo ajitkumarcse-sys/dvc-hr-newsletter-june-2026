@@ -1893,6 +1893,9 @@ h2,.h2{max-width:22ch}
 [lang="en"]{font-style:normal}
 #insights .feature-plate{width:min(100%,538px)}
 #insights .feature-plate img{width:100%}
+.kicker :lang(hi){font-size:1em}
+.folio-line span:not(.sep){font-size:13px;letter-spacing:0;text-transform:none}
+.foot-index .en{line-height:1.5}
 @keyframes mh-rise{from{opacity:0;transform:translateY(.32em)}}
 @keyframes settle{from{transform:scale(1.06)}}
 @keyframes fade-up{from{opacity:0;transform:translateY(12px)}}
