@@ -1887,6 +1887,12 @@ table.data .rank{font:600 1.1rem/1.2 var(--font-display);color:var(--terracotta)
   .colophon-grid{background:none;border-top:1px solid #000}
   .foot-index,.foot-links,.values-block{break-inside:avoid}
 }
+.drop::first-letter{float:none;font:inherit;color:inherit;padding:0;margin:0;line-height:inherit;-webkit-initial-letter:normal;initial-letter:normal}
+h2,.h2{max-width:22ch}
+.lede{max-width:46ch}
+[lang="en"]{font-style:normal}
+#insights .feature-plate{width:min(100%,538px)}
+#insights .feature-plate img{width:100%}
 @keyframes mh-rise{from{opacity:0;transform:translateY(.32em)}}
 @keyframes settle{from{transform:scale(1.06)}}
 @keyframes fade-up{from{opacity:0;transform:translateY(12px)}}

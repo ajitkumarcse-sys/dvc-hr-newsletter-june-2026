@@ -342,7 +342,7 @@
     if (!lb || !lbImg) return;
     var prev = $('.lb-prev', lb), next = $('.lb-next', lb), counter = $('.lb-count', lb);
     var group = [], idx = 0, dir = 1, opener = null;
-    if (!lb.hasAttribute('aria-label') && !lb.hasAttribute('aria-labelledby')) lb.setAttribute('aria-label', 'Image viewer');
+    if (!lb.hasAttribute('aria-label') && !lb.hasAttribute('aria-labelledby')) lb.setAttribute('aria-label', 'चित्र दर्शक');
     lbImg.draggable = false;
 
     var describe = function (a) {
@@ -387,7 +387,7 @@
       if (counter) {
         if (group.length > 1) {
           counter.innerHTML = '<span aria-hidden="true">' + (idx + 1) + ' / ' + group.length + '</span>'
-            + '<span class="sr-only">Photo ' + (idx + 1) + ' of ' + group.length + '</span>';
+            + '<span class="sr-only">फ़ोटो ' + (idx + 1) + ', कुल ' + group.length + ' में से</span>';
         } else {
           counter.textContent = '';
         }
@@ -465,7 +465,7 @@
       var set = function (v) {
         v = Math.max(0, Math.min(100, Math.round(Number(v) || 0)));
         fig.style.setProperty('--split', v + '%');
-        range.setAttribute('aria-valuetext', v + '% before, ' + (100 - v) + '% after');
+        range.setAttribute('aria-valuetext', v + '% पहले, ' + (100 - v) + '% बाद में');
       };
       var stop = function () {
         timers.forEach(clearTimeout);
@@ -549,7 +549,7 @@
         d.body.removeChild(t);
         focusQuiet(active);
         if (ok) toast(okMsg);
-        else toast('Could not copy automatically — ' + text, 'error');
+        else toast('स्वतः कॉपी नहीं हो सका — ' + text, 'error');
       };
       if (navigator.clipboard && w.isSecureContext) {
         navigator.clipboard.writeText(text).then(function () { toast(okMsg); }, fallback);
@@ -566,8 +566,8 @@
         var sec = id ? d.getElementById(id) : null, h = sec ? $('h2', sec) : null;
         var url = location.href.split('#')[0] + (id ? '#' + id : '');
         var heading = h ? (h.innerText || h.textContent || '').replace(/\s+/g, ' ').trim() : '';
-        var title = (heading ? heading + ' · ' : '') + 'MY DVC – MY VOICE, June 2026';
-        var linkMsg = 'Link copied — paste it into WhatsApp or an email.';
+        var title = (heading ? heading + ' · ' : '') + 'MY DVC – MY VOICE, जून 2026';
+        var linkMsg = 'लिंक कॉपी हो गया — इसे व्हाट्सऐप या ईमेल में पेस्ट करें।';
         if (navigator.share) {
           navigator.share({ title: title, url: url }).catch(function (err) {
             if (!err || err.name !== 'AbortError') copyText(url, linkMsg);
@@ -581,7 +581,7 @@
       if (c) {
         e.preventDefault();
         var v = c.getAttribute('data-copy') || '';
-        if (v) copyText(v, v.indexOf('@') > 0 ? 'Email address copied.' : 'Copied.');
+        if (v) copyText(v, v.indexOf('@') > 0 ? 'ईमेल पता कॉपी हो गया।' : 'कॉपी हो गया।');
       }
     });
   }
@@ -597,15 +597,15 @@
       var target = new Date(y, m, day), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       var days = Math.round((target - today) / 864e5);
       var when;
-      try { when = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }).format(target); }
+      try { when = new Intl.DateTimeFormat('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }).format(target); }
       catch (e) { when = target.toDateString(); }
       var time = d.createElement('time');
       time.setAttribute('datetime', y + '-' + pad(m + 1) + '-' + pad(day));
       time.textContent = when;
       el.textContent = '';
-      el.appendChild(d.createTextNode('Next deadline: '));
+      el.appendChild(d.createTextNode('अगली अंतिम तिथि: '));
       el.appendChild(time);
-      el.appendChild(d.createTextNode(' · ' + (days === 0 ? 'today' : days === 1 ? '1 day to go' : days + ' days to go')));
+      el.appendChild(d.createTextNode(' · ' + (days === 0 ? 'आज' : days === 1 ? '1 दिन शेष' : days + ' दिन शेष')));
       el.hidden = false;
     });
   }
@@ -616,7 +616,7 @@
       var sec = d.getElementById(el.getAttribute('data-readtime'));
       if (!sec) return;
       var words = (sec.textContent || '').trim().split(/\s+/).filter(Boolean).length;
-      el.textContent = Math.max(1, Math.round(words / 200)) + ' min read';
+      el.textContent = Math.max(1, Math.round(words / 200)) + ' मिनट में पढ़ें';
     });
   }
 

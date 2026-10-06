@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Editor Dashboard | MY DVC – MY VOICE</title>
+<title>संपादक डैशबोर्ड | MY DVC – MY VOICE</title>
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111923" media="(prefers-color-scheme: dark)">
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://zouhduusxgdmzmuiianb.supabase.co" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Tiro+Devanagari+Hindi&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400..700;1,400..700&display=optional">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=a2f239fb0d">
 </head>
 <body class="page-desk">
 <svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -82,12 +82,12 @@
 <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8 11v5.5M8 8v.01M11.5 16.5V11M11.5 13.5c0-1.6 1-2.5 2.4-2.5s2.1.9 2.1 2.5v3"/></symbol>
 <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor"/></symbol>
 </defs></svg>
-<a class="skip-link" href="#main">Skip to main content <span lang="hi">· मुख्य सामग्री पर जाएँ</span></a>
+<a class="skip-link" href="#main">मुख्य सामग्री पर जाएँ</a>
 
-<nav class="nav" aria-label="Site">
+<nav class="nav" aria-label="साइट">
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html"><img src="images/dvc-logo.jpg" alt="" width="26" height="32" data-keep><span class="nav-wordmark">MY DVC <span class="mh-dash">–</span> <i>MY VOICE</i></span></a>
-    <a class="nav-back" href="index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg><span class="nb-label">Newsletter</span></a>
+    <a class="nav-brand" href="index.html"><img src="images/dvc-logo.jpg" alt="" width="26" height="32" data-keep><span class="nav-wordmark" lang="en">MY DVC <span class="mh-dash">–</span> <i>MY VOICE</i></span></a>
+    <a class="nav-back" href="index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg><span class="nb-label">समाचार पत्रिका</span></a>
     <div class="nav-auth" id="navAuth"></div>
   </div>
 </nav>
@@ -95,9 +95,9 @@
 <main id="main" class="desk-main" tabindex="-1">
   <header class="dash-head">
     <div class="wrap">
-      <p class="kicker">Editorial Team <span class="sep" aria-hidden="true">·</span> Restricted</p>
-      <h1>Editor Dashboard</h1>
-      <p class="lede">Review article submissions, see quiz entries in order of submission, and manage quiz editions.</p>
+      <p class="kicker">संपादक मंडल <span class="sep" aria-hidden="true">·</span> प्रतिबंधित</p>
+      <h1>संपादक डैशबोर्ड</h1>
+      <p class="lede">प्राप्त रचनाओं की समीक्षा करें, प्रश्नोत्तरी प्रविष्टियाँ जमा किए जाने के क्रम में देखें और प्रश्नोत्तरी संस्करणों का प्रबंधन करें।</p>
     </div>
   </header>
 
@@ -106,40 +106,40 @@
 
     <div id="dashApp" class="hidden">
       <div class="dash-stats">
-        <div class="stat"><b id="sTotal">–</b><span>Article submissions</span></div>
-        <div class="stat"><b id="sPending">–</b><span>Awaiting review</span></div>
-        <div class="stat"><b id="sQuiz">–</b><span id="sQuizLabel">Quiz entries</span></div>
-        <div class="stat"><b id="sMembers">–</b><span>Registered members</span></div>
+        <div class="stat"><b id="sTotal">–</b><span>प्राप्त रचनाएँ</span></div>
+        <div class="stat"><b id="sPending">–</b><span>समीक्षा हेतु लंबित</span></div>
+        <div class="stat"><b id="sQuiz">–</b><span id="sQuizLabel">प्रश्नोत्तरी प्रविष्टियाँ</span></div>
+        <div class="stat"><b id="sMembers">–</b><span>पंजीकृत सदस्य</span></div>
       </div>
 
-      <div class="dash-tabs" role="tablist" aria-label="Dashboard sections">
-        <button type="button" class="active" data-tab="articles" role="tab" aria-selected="true" id="tabbtn-articles" aria-controls="tab-articles"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Articles <span class="count" id="articleCount">0</span></button>
-        <button type="button" data-tab="quiz" role="tab" aria-selected="false" id="tabbtn-quiz" aria-controls="tab-quiz"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>Quiz entries <span class="count" id="quizCount">0</span></button>
-        <button type="button" data-tab="members" role="tab" aria-selected="false" id="tabbtn-members" aria-controls="tab-members"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Members <span class="count" id="memberCount">0</span></button>
+      <div class="dash-tabs" role="tablist" aria-label="डैशबोर्ड के खंड">
+        <button type="button" class="active" data-tab="articles" role="tab" aria-selected="true" id="tabbtn-articles" aria-controls="tab-articles"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>रचनाएँ <span class="count" id="articleCount">0</span></button>
+        <button type="button" data-tab="quiz" role="tab" aria-selected="false" id="tabbtn-quiz" aria-controls="tab-quiz"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>प्रश्नोत्तरी प्रविष्टियाँ <span class="count" id="quizCount">0</span></button>
+        <button type="button" data-tab="members" role="tab" aria-selected="false" id="tabbtn-members" aria-controls="tab-members"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>सदस्य <span class="count" id="memberCount">0</span></button>
       </div>
 
       <!-- ARTICLES -->
       <section class="dash-panel" id="tab-articles" role="tabpanel" aria-labelledby="tabbtn-articles">
         <div class="toolbar">
-          <select id="fStatus" aria-label="Filter by status">
-            <option value="">All statuses</option>
-            <option value="pending" selected>Under review</option>
-            <option value="shortlisted">Shortlisted</option>
-            <option value="not_selected">Not selected</option>
+          <select id="fStatus" aria-label="स्थिति के अनुसार फ़िल्टर करें">
+            <option value="">सभी स्थितियाँ</option>
+            <option value="pending" selected>समीक्षाधीन</option>
+            <option value="shortlisted">शॉर्टलिस्ट</option>
+            <option value="not_selected">चयनित नहीं</option>
           </select>
-          <select id="fCategory" aria-label="Filter by category">
-            <option value="">All categories</option>
-            <option>Article</option>
-            <option>Achievement</option>
-            <option>Poem / Creative</option>
-            <option>Photograph</option>
-            <option>Station News</option>
-            <option>Feedback / Suggestion</option>
+          <select id="fCategory" aria-label="श्रेणी के अनुसार फ़िल्टर करें">
+            <option value="">सभी श्रेणियाँ</option>
+            <option value="Article">लेख</option>
+            <option value="Achievement">उपलब्धि</option>
+            <option value="Poem / Creative">कविता / सृजनात्मक लेखन</option>
+            <option value="Photograph">छायाचित्र</option>
+            <option value="Station News">स्टेशन समाचार</option>
+            <option value="Feedback / Suggestion">प्रतिक्रिया / सुझाव</option>
           </select>
-          <input type="search" id="fSearch" placeholder="Search title, author, station…" aria-label="Search articles">
+          <input type="search" id="fSearch" placeholder="शीर्षक, लेखक, स्टेशन खोजें…" aria-label="रचनाएँ खोजें">
           <span class="spacer"></span>
-          <button class="btn btn-secondary btn-sm" type="button" id="refreshBtn"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-refresh"/></svg>Refresh</button>
-          <button class="btn btn-secondary btn-sm" type="button" id="exportArticles"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>Export CSV</button>
+          <button class="btn btn-secondary btn-sm" type="button" id="refreshBtn"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-refresh"/></svg>रिफ़्रेश करें</button>
+          <button class="btn btn-secondary btn-sm" type="button" id="exportArticles"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>CSV निर्यात करें</button>
         </div>
         <div id="articleList"></div>
       </section>
@@ -147,34 +147,34 @@
       <!-- QUIZ -->
       <section class="dash-panel hidden" id="tab-quiz" role="tabpanel" aria-labelledby="tabbtn-quiz">
         <div class="toolbar">
-          <label for="qEdition" class="muted">Edition</label>
+          <label for="qEdition" class="muted">संस्करण</label>
           <select id="qEdition"></select>
-          <label class="toggle"><input type="checkbox" id="qOpen"> Accepting entries <span class="status" id="qOpenState"></span></label>
+          <label class="toggle"><input type="checkbox" id="qOpen"> प्रविष्टियाँ स्वीकार की जा रही हैं <span class="status" id="qOpenState"></span></label>
           <span class="spacer"></span>
-          <button class="btn btn-secondary btn-sm" type="button" id="exportQuiz"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>Export CSV</button>
+          <button class="btn btn-secondary btn-sm" type="button" id="exportQuiz"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>CSV निर्यात करें</button>
         </div>
-        <p class="desk-note">Entries are listed in the order they were received (the server records the time, so it can't be changed). Winners are decided on correct answers, then fastest submission.</p>
+        <p class="desk-note">प्रविष्टियाँ उसी क्रम में सूचीबद्ध हैं जिस क्रम में वे प्राप्त हुईं (समय सर्वर द्वारा दर्ज किया जाता है, इसलिए इसे बदला नहीं जा सकता)। विजेताओं का निर्णय सही उत्तरों की संख्या और फिर सबसे पहले जमा करने के आधार पर किया जाता है।</p>
         <div id="quizTable"></div>
         <form class="new-edition" id="newEditionForm">
-          <b class="ne-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>Start a new quiz edition</b>
-          <input id="neEdition" placeholder="YYYY-MM e.g. 2026-07" maxlength="7" required aria-label="Edition (YYYY-MM)">
-          <input id="neTitle" placeholder="Title (optional)" maxlength="120" aria-label="Edition title">
-          <button class="btn btn-primary btn-sm" type="submit">Create &amp; open</button>
+          <b class="ne-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>नया प्रश्नोत्तरी संस्करण शुरू करें</b>
+          <input id="neEdition" placeholder="YYYY-MM, जैसे 2026-07" maxlength="7" required aria-label="संस्करण (YYYY-MM)">
+          <input id="neTitle" placeholder="शीर्षक (वैकल्पिक)" maxlength="120" aria-label="संस्करण का शीर्षक">
+          <button class="btn btn-primary btn-sm" type="submit">बनाएँ और खोलें</button>
         </form>
       </section>
 
       <!-- MEMBERS -->
       <section class="dash-panel hidden" id="tab-members" role="tabpanel" aria-labelledby="tabbtn-members">
         <div class="toolbar">
-          <input type="search" id="mSearch" placeholder="Search name, email, station…" aria-label="Search members">
+          <input type="search" id="mSearch" placeholder="नाम, ईमेल, स्टेशन खोजें…" aria-label="सदस्य खोजें">
           <span class="spacer"></span>
-          <button class="btn btn-secondary btn-sm" type="button" id="exportMembers"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>Export CSV</button>
+          <button class="btn btn-secondary btn-sm" type="button" id="exportMembers"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>CSV निर्यात करें</button>
         </div>
         <div id="memberTable"></div>
       </section>
     </div>
 
-    <div class="desk-boot loading">Loading…</div>
+    <div class="desk-boot loading">लोड हो रहा है…</div>
   </div>
 </main>
 
@@ -183,113 +183,113 @@
   <div class="vc-band vc-band--flip" aria-hidden="true"></div>
   <svg class="river river--key" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M0 18 C200 37 260 20 380 13 S540 24 660 29 S840 14 940 12 S1080 26 1200 26"/></svg>
   <div class="wrap">
-    <p class="signoff-giant" aria-hidden="true"><span class="sg-a">MY DVC –</span> <span class="sg-b">MY VOICE</span></p>
+    <p class="signoff-giant" aria-hidden="true" lang="en"><span class="sg-a">MY DVC –</span> <span class="sg-b">MY VOICE</span></p>
 
     <div class="values-block">
-      <p class="kicker" id="colophon-values">DVC values</p>
+      <p class="kicker" id="colophon-values">डीवीसी के मूल मूल्य</p>
       <ul class="values-row" aria-labelledby="colophon-values">
-        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-heart"/></svg></span><span class="v-txt"><b class="v-name">People</b><span class="v-motto">We care</span></span></li>
-        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-shield-check"/></svg></span><span class="v-txt"><b class="v-name">Integrity</b><span class="v-motto">We are honest</span></span></li>
-        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-handshake"/></svg></span><span class="v-txt"><b class="v-name">Collaboration</b><span class="v-motto">We work together</span></span></li>
-        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-star"/></svg></span><span class="v-txt"><b class="v-name">Excellence</b><span class="v-motto">We deliver</span></span></li>
+        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-heart"/></svg></span><span class="v-txt"><b class="v-name">लोग</b><span class="v-motto">हम परवाह करते हैं</span></span></li>
+        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-shield-check"/></svg></span><span class="v-txt"><b class="v-name">सत्यनिष्ठा</b><span class="v-motto">हम ईमानदार हैं</span></span></li>
+        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-handshake"/></svg></span><span class="v-txt"><b class="v-name">सहयोग</b><span class="v-motto">हम मिलकर काम करते हैं</span></span></li>
+        <li><span class="v-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-star"/></svg></span><span class="v-txt"><b class="v-name">उत्कृष्टता</b><span class="v-motto">हम परिणाम देते हैं</span></span></li>
       </ul>
     </div>
 
     <div class="colophon-grid">
       <div class="cg-edition">
-        <p class="kicker">Edition</p>
+        <p class="kicker">अंक</p>
         <div class="foot-brand">
-          <img class="foot-seal" src="images/dvc-logo.jpg" alt="Damodar Valley Corporation" width="32" height="40" loading="lazy" decoding="async" data-keep>
-          <p class="foot-title">MY DVC – MY VOICE · HR Newsletter · June 2026</p>
+          <img class="foot-seal" src="images/dvc-logo.jpg" alt="दामोदर घाटी निगम" width="32" height="40" loading="lazy" decoding="async" data-keep>
+          <p class="foot-title"><span lang="en">MY DVC – MY VOICE</span> · मानव संसाधन समाचार पत्रिका · जून 2026</p>
         </div>
-        <p class="foot-lineage">MY DVC – MY VOICE is the in-house HR newsletter of Damodar Valley Corporation, a statutory organisation under the Ministry of Power, Government of India.</p>
+        <p class="foot-lineage"><span lang="en">MY DVC – MY VOICE</span> दामोदर घाटी निगम की मानव संसाधन गृह पत्रिका है।</p>
         <p class="foot-lineage foot-lineage-hi" lang="hi">दामोदर घाटी निगम — विद्युत मंत्रालय, भारत सरकार की एक वैधानिक संस्था</p>
       </div>
       <div class="cg-publisher">
-        <p class="kicker">Publisher</p>
+        <p class="kicker">प्रकाशक</p>
         <address class="foot-address">
-          <span class="fa-line"><b>HR Department, Damodar Valley Corporation</b></span>
-          <span class="fa-line">DVC Towers, VIP Road, Kolkata – 700054</span>
-          <span class="fa-line fa-meta">Est. 7 July 1948 <span class="dot">·</span> First published August 2012</span>
+          <span class="fa-line"><b>मानव संसाधन विभाग, दामोदर घाटी निगम</b></span>
+          <span class="fa-line">डीवीसी टावर्स, वीआईपी रोड, कोलकाता – 700054</span>
+          <span class="fa-line fa-meta">स्थापना: 7 जुलाई 1948 <span class="dot">·</span> प्रथम प्रकाशन: अगस्त 2012</span>
         </address>
       </div>
       <div class="cg-write">
-        <p class="kicker">Write to us</p>
+        <p class="kicker">हमें लिखें</p>
         <p class="foot-mail"><a class="foot-mail-link" href="mailto:dvchrnewsletter@gmail.com"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-envelope"/></svg>dvchrnewsletter@gmail.com</a></p>
-        <p class="foot-copy"><button class="copy-btn" type="button" data-copy="dvchrnewsletter@gmail.com"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-copy"/></svg>Copy<span class="sr-only"> the editors' email address</span></button></p>
+        <p class="foot-copy"><button class="copy-btn" type="button" data-copy="dvchrnewsletter@gmail.com"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-copy"/></svg>कॉपी करें<span class="sr-only">: संपादकों का ईमेल पता</span></button></p>
       </div>
     </div>
 
     <nav class="foot-index" aria-labelledby="colophon-depts">
-      <p class="kicker" id="colophon-depts">Departments</p>
+      <p class="kicker" id="colophon-depts">खंड</p>
       <ol>
-        <li><a href="index.html#editors"><span class="n" aria-hidden="true">01</span><span class="en">Editors' Desk</span><span class="hi" lang="hi">संपादकीय</span></a></li>
-        <li><a href="index.html#insights"><span class="n" aria-hidden="true">02</span><span class="en">HR Insights</span><span class="hi" lang="hi">मानव संसाधन अंतर्दृष्टि</span></a></li>
-        <li><a href="index.html#initiative"><span class="n" aria-hidden="true">03</span><span class="en">HR Initiative</span><span class="hi" lang="hi">मानव संसाधन पहल</span></a></li>
-        <li><a href="index.html#employee-corner"><span class="n" aria-hidden="true">04</span><span class="en">Employee Corner</span><span class="hi" lang="hi">कर्मचारी कोना</span></a></li>
-        <li><a href="index.html#events"><span class="n" aria-hidden="true">05</span><span class="en">Events</span><span class="hi" lang="hi">आयोजन एवं उत्सव</span></a></li>
-        <li><a href="index.html#csr"><span class="n" aria-hidden="true">06</span><span class="en">CSR</span><span class="hi" lang="hi">निगमित सामाजिक दायित्व</span></a></li>
-        <li><a href="index.html#health"><span class="n" aria-hidden="true">07</span><span class="en">Health</span><span class="hi" lang="hi">स्वास्थ्य कोना</span></a></li>
-        <li><a href="index.html#quiz"><span class="n" aria-hidden="true">08</span><span class="en">Quiz</span><span class="hi" lang="hi">प्रश्नोत्तरी</span></a></li>
-        <li><a href="index.html#submit"><span class="n" aria-hidden="true">09</span><span class="en">Submit Article</span><span class="hi" lang="hi">रचना भेजें</span></a></li>
-        <li><a href="index.html#contribute"><span class="n" aria-hidden="true">10</span><span class="en">Back Page</span><span class="hi" lang="hi">सहभागिता</span></a></li>
+        <li><a href="index.html#editors"><span class="n" aria-hidden="true">01</span><span class="en">संपादकीय</span></a></li>
+        <li><a href="index.html#insights"><span class="n" aria-hidden="true">02</span><span class="en">मानव संसाधन अंतर्दृष्टि</span></a></li>
+        <li><a href="index.html#initiative"><span class="n" aria-hidden="true">03</span><span class="en">मानव संसाधन पहल</span></a></li>
+        <li><a href="index.html#employee-corner"><span class="n" aria-hidden="true">04</span><span class="en">कर्मचारी कोना</span></a></li>
+        <li><a href="index.html#events"><span class="n" aria-hidden="true">05</span><span class="en">आयोजन एवं उत्सव</span></a></li>
+        <li><a href="index.html#csr"><span class="n" aria-hidden="true">06</span><span class="en">निगमित सामाजिक दायित्व</span></a></li>
+        <li><a href="index.html#health"><span class="n" aria-hidden="true">07</span><span class="en">स्वास्थ्य कोना</span></a></li>
+        <li><a href="index.html#quiz"><span class="n" aria-hidden="true">08</span><span class="en">प्रश्नोत्तरी</span></a></li>
+        <li><a href="index.html#submit"><span class="n" aria-hidden="true">09</span><span class="en">रचना भेजें</span></a></li>
+        <li><a href="index.html#contribute"><span class="n" aria-hidden="true">10</span><span class="en">सहभागिता</span></a></li>
       </ol>
     </nav>
 
     <div class="foot-links">
       <nav class="foot-group" aria-labelledby="colophon-help">
-        <p class="kicker" id="colophon-help">Help &amp; contact</p>
+        <p class="kicker" id="colophon-help">सहायता एवं संपर्क</p>
         <ul>
-          <li><a href="mailto:dvchrnewsletter@gmail.com">Contact the editors</a></li>
-          <li><a href="mailto:dvchrnewsletter@gmail.com?subject=Newsletter%20feedback">Feedback</a></li>
-          <li><a href="accessibility.html">Accessibility statement</a></li>
-          <li><a href="privacy.html">Privacy notice</a></li>
+          <li><a href="mailto:dvchrnewsletter@gmail.com">संपादकों से संपर्क करें</a></li>
+          <li><a href="mailto:dvchrnewsletter@gmail.com?subject=Newsletter%20feedback">प्रतिक्रिया</a></li>
+          <li><a href="accessibility.html">अभिगम्यता विवरण</a></li>
+          <li><a href="privacy.html">गोपनीयता सूचना</a></li>
         </ul>
       </nav>
       <nav class="foot-group" aria-labelledby="colophon-policies">
-        <p class="kicker" id="colophon-policies">DVC policies</p>
+        <p class="kicker" id="colophon-policies">डीवीसी नीतियाँ</p>
         <ul>
-          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/313" rel="noopener">Website Policies<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
-          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/441" rel="noopener">Terms &amp; Conditions<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
-          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/315" rel="noopener">Disclaimer<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
+          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/313" rel="noopener">वेबसाइट नीतियाँ<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
+          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/441" rel="noopener">नियम एवं शर्तें<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
+          <li><a href="https://www.dvc.gov.in/cms-web/details-pages/315" rel="noopener">अस्वीकरण<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg><span class="sr-only"> (dvc.gov.in)</span></a></li>
         </ul>
       </nav>
       <nav class="foot-group" aria-labelledby="colophon-related">
-        <p class="kicker" id="colophon-related">Related</p>
+        <p class="kicker" id="colophon-related">संबंधित लिंक</p>
         <ul>
           <li><a href="https://www.dvc.gov.in" rel="noopener">dvc.gov.in<svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg></a></li>
-          <li><a href="https://www.india.gov.in" target="_blank" rel="noopener">india.gov.in <span class="new-win">(opens in a new window)</span><svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg></a></li>
+          <li><a href="https://www.india.gov.in" target="_blank" rel="noopener">india.gov.in <span class="new-win">(नई विंडो में खुलता है)</span><svg class="ico ext" aria-hidden="true" focusable="false"><use href="index.html#i-external"/></svg></a></li>
         </ul>
         <ul class="social">
-          <li><a href="https://x.com/damodarvalleyco" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-x"/></svg>X<span class="sr-only"> (external site)</span></a></li>
-          <li><a href="https://www.facebook.com/DamodarVC" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-facebook"/></svg>Facebook<span class="sr-only"> (external site)</span></a></li>
-          <li><a href="https://www.instagram.com/damodar.valley.corporation" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-instagram"/></svg>Instagram<span class="sr-only"> (external site)</span></a></li>
-          <li><a href="https://www.linkedin.com/company/damodar-valley-corporation-dvc-" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-linkedin"/></svg>LinkedIn<span class="sr-only"> (external site)</span></a></li>
-          <li><a href="https://www.youtube.com/@dvc1948" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-youtube"/></svg>YouTube<span class="sr-only"> (external site)</span></a></li>
+          <li><a href="https://x.com/damodarvalleyco" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-x"/></svg>X<span class="sr-only"> (बाहरी साइट)</span></a></li>
+          <li><a href="https://www.facebook.com/DamodarVC" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-facebook"/></svg>Facebook<span class="sr-only"> (बाहरी साइट)</span></a></li>
+          <li><a href="https://www.instagram.com/damodar.valley.corporation" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-instagram"/></svg>Instagram<span class="sr-only"> (बाहरी साइट)</span></a></li>
+          <li><a href="https://www.linkedin.com/company/damodar-valley-corporation-dvc-" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-linkedin"/></svg>LinkedIn<span class="sr-only"> (बाहरी साइट)</span></a></li>
+          <li><a href="https://www.youtube.com/@dvc1948" rel="noopener"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-youtube"/></svg>YouTube<span class="sr-only"> (बाहरी साइट)</span></a></li>
         </ul>
       </nav>
     </div>
 
     <div class="foot-end">
-      <p class="happy">Happy Reading!</p>
+      <p class="happy">पढ़ने का आनंद लें!</p>
       <div class="foot-settings">
-        <p class="kicker" id="colophon-rs">Reading settings</p>
+        <p class="kicker" id="colophon-rs">पठन सेटिंग्स</p>
         <div class="reading-settings" role="group" aria-labelledby="colophon-rs">
-          <div class="seg" role="group" aria-label="Text size"><button type="button" data-ts="md" aria-pressed="true" aria-label="Default text size">A</button><button type="button" data-ts="lg" aria-pressed="false" aria-label="Larger text">A</button><button type="button" data-ts="xl" aria-pressed="false" aria-label="Largest text">A</button></div>
-          <div class="seg" role="group" aria-label="Theme"><button type="button" data-theme-set="light" aria-pressed="false">Day</button><button type="button" data-theme-set="dark" aria-pressed="false">Night</button><button type="button" data-theme-set="auto" aria-pressed="true">Auto</button></div>
-          <div class="seg" role="group" aria-label="Motion"><button type="button" data-motion-set="full" aria-pressed="true">Motion on</button><button type="button" data-motion-set="reduce" aria-pressed="false">Reduce motion</button></div>
+          <div class="seg" role="group" aria-label="फ़ॉन्ट आकार"><button type="button" data-ts="md" aria-pressed="true" aria-label="सामान्य फ़ॉन्ट आकार">A</button><button type="button" data-ts="lg" aria-pressed="false" aria-label="बड़ा फ़ॉन्ट">A</button><button type="button" data-ts="xl" aria-pressed="false" aria-label="सबसे बड़ा फ़ॉन्ट">A</button></div>
+          <div class="seg" role="group" aria-label="थीम"><button type="button" data-theme-set="light" aria-pressed="false">दिन</button><button type="button" data-theme-set="dark" aria-pressed="false">रात</button><button type="button" data-theme-set="auto" aria-pressed="true">स्वतः</button></div>
+          <div class="seg" role="group" aria-label="एनिमेशन"><button type="button" data-motion-set="full" aria-pressed="true">एनिमेशन चालू</button><button type="button" data-motion-set="reduce" aria-pressed="false">एनिमेशन कम करें</button></div>
         </div>
       </div>
-      <a class="to-top" href="index.html#top"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-arrow-up"/></svg>Back to the cover</a>
+      <a class="to-top" href="index.html#top"><svg class="ico" aria-hidden="true" focusable="false"><use href="index.html#i-arrow-up"/></svg>आवरण पर लौटें</a>
     </div>
 
     <div class="foot-legal">
       <ul class="legal-list">
-        <li>© Damodar Valley Corporation</li>
-        <li>Last updated <time datetime="2026-10-06">6 October 2026</time></li>
-        <li>Internal publication for DVC employees</li>
+        <li>© दामोदर घाटी निगम</li>
+        <li>अंतिम अद्यतन: <time datetime="2026-10-06">6 अक्टूबर 2026</time></li>
+        <li>डीवीसी कर्मचारियों के लिए आंतरिक प्रकाशन</li>
       </ul>
-      <p class="disclaimer">Disclaimer: This publication is the intellectual property of Damodar Valley Corporation.</p>
+      <p class="disclaimer">अस्वीकरण: यह प्रकाशन दामोदर घाटी निगम की बौद्धिक संपदा है।</p>
     </div>
   </div>
 </footer>
@@ -297,9 +297,9 @@
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.min.js"></script>
-<script defer src="js/config.js"></script>
-<script defer src="js/auth.js"></script>
-<script defer src="js/dashboard.js"></script>
-<script defer src="js/editorial.js"></script>
+<script defer src="js/config.js?v=a480cc80ef"></script>
+<script defer src="js/auth.js?v=1d3652c6bf"></script>
+<script defer src="js/dashboard.js?v=ae151259da"></script>
+<script defer src="js/editorial.js?v=5d23e4ad02"></script>
 </body>
 </html>

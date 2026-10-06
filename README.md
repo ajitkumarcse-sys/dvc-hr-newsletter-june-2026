@@ -1,5 +1,14 @@
 # MY DVC – MY VOICE · HR Newsletter website
 
+> **The site is published in Hindi only** (`<html lang="hi">`): all articles, navigation, forms, login, quiz,
+> dashboard and legal pages. The newsletter name "MY DVC – MY VOICE", station codes (MTPS, DSTPS…) and email
+> addresses stay in Latin script. The previous English version is preserved in git history (commit `27caf10`).
+> Form values stored in the database (article categories, language, review status) remain English keys; the pages
+> display Hindi labels for them.
+>
+> **After editing `css/style.css` or any `js/*.js` file, run `python tools/fingerprint_assets.py`** — the host caches
+> CSS/JS for 7 days, and this updates the `?v=` version on their links so readers get the new files immediately.
+
 Static newsletter site (HTML/CSS/JS) with employee login, online article submission,
 and quiz submission, backed by [Supabase](https://supabase.com) (auth, database, photo storage).
 

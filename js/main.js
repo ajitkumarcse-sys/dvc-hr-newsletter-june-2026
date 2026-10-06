@@ -7,7 +7,10 @@
   const sb = window.sb;
   const EDITION = cfg.QUIZ_EDITION;
   const QUESTIONS = cfg.QUIZ_QUESTIONS;
-  const STATUS_LABEL = { pending: 'Under review', shortlisted: 'Shortlisted', not_selected: 'Not selected' };
+  const STATUS_LABEL = { pending: 'समीक्षाधीन', shortlisted: 'शॉर्टलिस्ट', not_selected: 'चयनित नहीं' };
+  // Display-only labels: the database stores the English values (a.category / a.language).
+  const CATEGORY_LABEL = { 'Article': 'लेख', 'Achievement': 'उपलब्धि', 'Poem / Creative': 'कविता / सृजनात्मक लेखन', 'Photograph': 'छायाचित्र', 'Station News': 'स्टेशन समाचार', 'Feedback / Suggestion': 'प्रतिक्रिया / सुझाव' };
+  const LANGUAGE_LABEL = { English: 'अंग्रेज़ी', Hindi: 'हिंदी' };
   const IMAGE_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
   // Jump instead of gliding when the reader (OS setting) or the site switch asks for reduced motion.
   const scrollBehavior = () => ((document.documentElement.getAttribute('data-motion') === 'reduce'
@@ -34,7 +37,7 @@
     <li>
       <span class="q-text">${esc(q)}</span>
       <input class="quiz-input" type="text" maxlength="300" data-q="${i}" autocomplete="off"
-             placeholder="Your answer" aria-label="Answer to question ${i + 1}">
+             placeholder="आपका उत्तर" aria-label="प्रश्न ${i + 1} का उत्तर">
     </li>`).join('');
   const quizInputs = [...quizList.querySelectorAll('.quiz-input')];
 
@@ -52,25 +55,25 @@
 
     if (sub) {
       quizInputs.forEach((inp, i) => { inp.value = sub.answers[i] || ''; inp.readOnly = true; inp.disabled = false; });
-      setAlert(quizAlert, 'success', `Your answers were received on ${fmtDate(sub.submitted_at)}. Winners will be featured in the next edition — good luck!`);
+      setAlert(quizAlert, 'success', `आपके उत्तर ${fmtDate(sub.submitted_at)} को प्राप्त हुए। विजेताओं के नाम अगले अंक में प्रकाशित किए जाएँगे — शुभकामनाएँ!`);
       quizSubmit.classList.add('hidden');
       return;
     }
     quizInputs.forEach((inp) => { inp.readOnly = false; inp.disabled = !quizState.open; });
     if (!quizState.open) {
-      setAlert(quizAlert, 'info', 'This quiz is closed for new entries. Winners will be announced in the next edition.');
+      setAlert(quizAlert, 'info', 'यह प्रश्नोत्तरी नई प्रविष्टियों के लिए बंद हो चुकी है। विजेताओं के नाम अगले अंक में घोषित किए जाएँगे।');
       quizSubmit.classList.add('hidden');
       return;
     }
     if (quizAlert.classList.contains('alert-success') || quizAlert.classList.contains('alert-info')) clearAlert(quizAlert);
     if (!Auth.user) {
       quizGate.classList.remove('hidden');
-      quizSubmit.textContent = 'Log in & submit';
+      quizSubmit.textContent = 'लॉग इन करके जमा करें';
       return;
     }
     const p = Auth.profile || {};
-    quizSubmit.textContent = 'Submit my answers';
-    quizStatus.textContent = `Submitting as ${[p.full_name, p.designation, p.place_of_posting].filter(Boolean).join(' · ')}`;
+    quizSubmit.textContent = 'मेरे उत्तर जमा करें';
+    quizStatus.textContent = `इस नाम से जमा किया जा रहा है: ${[p.full_name, p.designation, p.place_of_posting].filter(Boolean).join(' · ')}`;
   }
 
   async function loadQuiz() {
@@ -90,17 +93,17 @@
   quizForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!Auth.user) {
-      window.openAuth('login', 'Log in to submit your quiz answers — what you have typed is kept on this device.');
+      window.openAuth('login', 'प्रश्नोत्तरी के उत्तर जमा करने के लिए लॉग इन करें — आपने जो लिखा है, वह इसी डिवाइस पर सुरक्षित रहता है।');
       return;
     }
     if (quizState.submission || !quizState.open) return;
     const answers = quizInputs.map((i) => i.value.trim());
     const filled = answers.filter(Boolean).length;
-    if (!filled) { setAlert(quizAlert, 'error', 'Please answer at least one question before submitting.'); return; }
+    if (!filled) { setAlert(quizAlert, 'error', 'जमा करने से पहले कृपया कम से कम एक प्रश्न का उत्तर दें।'); return; }
     const blanks = answers.length - filled;
     const prompt = blanks
-      ? `You have left ${blanks} question${blanks > 1 ? 's' : ''} blank.\n\nYou can submit only once. Submit anyway?`
-      : 'Submit your answers now? You can submit only once.';
+      ? `आपने ${blanks} प्रश्न खाली ${blanks > 1 ? 'छोड़े हैं' : 'छोड़ा है'}।\n\nआप केवल एक बार जमा कर सकते हैं। फिर भी जमा करें?`
+      : 'अपने उत्तर अभी जमा करें? आप केवल एक बार जमा कर सकते हैं।';
     if (!window.confirm(prompt)) return;
 
     withBusy(quizForm, async () => {
@@ -109,8 +112,8 @@
         .select('answers, submitted_at')
         .single();
       if (error) {
-        if (error.code === '23505') setAlert(quizAlert, 'error', 'You have already submitted answers for this quiz.');
-        else if (error.code === '42501') setAlert(quizAlert, 'error', 'This quiz is no longer accepting entries.');
+        if (error.code === '23505') setAlert(quizAlert, 'error', 'इस प्रश्नोत्तरी के लिए आपके उत्तर पहले ही जमा हो चुके हैं।');
+        else if (error.code === '42501') setAlert(quizAlert, 'error', 'इस प्रश्नोत्तरी में अब प्रविष्टियाँ स्वीकार नहीं की जा रही हैं।');
         else { setAlert(quizAlert, 'error', friendly(error)); return; }
         await loadQuiz();
         return;
@@ -119,7 +122,7 @@
       store.del(QUIZ_DRAFT);
       renderQuiz();
       quizAlert.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
-      toast('Your quiz answers have been submitted. Good luck!');
+      toast('प्रश्नोत्तरी के लिए आपके उत्तर जमा हो गए हैं। शुभकामनाएँ!');
     });
   });
 
@@ -137,7 +140,7 @@
 
   function updateWordCount() {
     const n = wordCount(artContent.value);
-    wordCountEl.textContent = `${n} / ${cfg.MAX_WORDS} words`;
+    wordCountEl.textContent = `${n} / ${cfg.MAX_WORDS} शब्द`;
     wordCountEl.classList.toggle('over', n > cfg.MAX_WORDS);
   }
 
@@ -154,8 +157,8 @@
   });
 
   function validateImage(f) {
-    if (!IMAGE_TYPES[f.type]) return 'Photos must be JPG, PNG or WebP images.';
-    if (f.size > cfg.MAX_PHOTO_MB * 1024 * 1024) return `Each photo must be ${cfg.MAX_PHOTO_MB} MB or smaller.`;
+    if (!IMAGE_TYPES[f.type]) return 'फ़ोटो JPG, PNG या WebP प्रारूप में होनी चाहिए।';
+    if (f.size > cfg.MAX_PHOTO_MB * 1024 * 1024) return `प्रत्येक फ़ोटो का आकार अधिकतम ${cfg.MAX_PHOTO_MB} MB होना चाहिए।`;
     return null;
   }
 
@@ -188,14 +191,14 @@
     artGate.classList.toggle('hidden', !Auth.ready || !!Auth.user);
     const p = Auth.profile;
     artStatus.textContent = Auth.user && p
-      ? `Submitting as ${[p.full_name, p.designation, p.department, p.place_of_posting].filter(Boolean).join(' · ')}`
+      ? `इस नाम से भेजा जा रहा है: ${[p.full_name, p.designation, p.department, p.place_of_posting].filter(Boolean).join(' · ')}`
       : '';
   }
 
   artForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!Auth.user) {
-      window.openAuth('login', 'Log in to submit your article — your draft is kept on this device.');
+      window.openAuth('login', 'अपनी रचना भेजने के लिए लॉग इन करें — आपका मसौदा इसी डिवाइस पर सुरक्षित रहता है।');
       return;
     }
     const el = artForm.elements;
@@ -206,16 +209,16 @@
     const photo = el.photo.files[0];
     const authorPhoto = el.author_photo.files[0];
 
-    if (title.length < 3) return setAlert(artAlert, 'error', 'Please add a title (at least 3 characters).');
-    if (!category) return setAlert(artAlert, 'error', 'Please choose a category.');
-    if (!content) return setAlert(artAlert, 'error', 'Please write your article.');
+    if (title.length < 3) return setAlert(artAlert, 'error', 'कृपया शीर्षक लिखें (कम से कम 3 अक्षर)।');
+    if (!category) return setAlert(artAlert, 'error', 'कृपया श्रेणी चुनें।');
+    if (!content) return setAlert(artAlert, 'error', 'कृपया अपनी रचना लिखें।');
     const n = wordCount(content);
-    if (n > cfg.MAX_WORDS) return setAlert(artAlert, 'error', `Your article is ${n} words — please keep it within ${cfg.MAX_WORDS} words.`);
+    if (n > cfg.MAX_WORDS) return setAlert(artAlert, 'error', `आपकी रचना ${n} शब्दों की है — कृपया इसे ${cfg.MAX_WORDS} शब्दों के भीतर रखें।`);
     for (const f of [photo, authorPhoto]) {
       const err = f && validateImage(f);
       if (err) return setAlert(artAlert, 'error', err);
     }
-    if (!el.consent.checked) return setAlert(artAlert, 'error', 'Please confirm the declaration before submitting.');
+    if (!el.consent.checked) return setAlert(artAlert, 'error', 'भेजने से पहले कृपया घोषणा की पुष्टि करें।');
 
     withBusy(artForm, async () => {
       const uploaded = [];
@@ -238,9 +241,9 @@
       resetAuthorPhoto();
       store.del(ART_DRAFT);
       updateWordCount();
-      setAlert(artAlert, 'success', `Thank you! “${title}” has been sent to the Editorial Team. Track its status under “My profile & submissions”.`);
+      setAlert(artAlert, 'success', `धन्यवाद! “${title}” संपादक मंडल को भेज दी गई है। इसकी स्थिति “मेरी प्रोफ़ाइल और प्रविष्टियाँ” में देखें।`);
       artAlert.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
-      toast('Article submitted successfully!');
+      toast('रचना सफलतापूर्वक भेज दी गई!');
     });
   });
 
@@ -259,7 +262,7 @@
   });
 
   async function loadMySubmissions() {
-    myArticles.innerHTML = '<div class="loading">Loading…</div>';
+    myArticles.innerHTML = '<div class="loading">लोड हो रहा है…</div>';
     myQuiz.innerHTML = '';
     const uid = Auth.user.id;
     const [arts, quiz] = await Promise.all([
@@ -272,37 +275,37 @@
     ]);
 
     if (arts.error) myArticles.innerHTML = `<div class="alert alert-error">${esc(friendly(arts.error))}</div>`;
-    else if (!arts.data.length) myArticles.innerHTML = '<div class="empty">No articles yet. <a href="#submit" data-close>Submit your first one →</a></div>';
+    else if (!arts.data.length) myArticles.innerHTML = '<div class="empty">अभी तक आपने कोई रचना नहीं भेजी है। <a href="#submit" data-close>अपनी पहली रचना भेजें →</a></div>';
     else {
       myArticles.innerHTML = arts.data.map((a) => `
         <div class="sub-item">
           <div class="top">
             <div><b>${esc(a.title)}</b>
-              <div class="meta">${esc(a.category)} · ${esc(a.language)} · Submitted ${esc(fmtDate(a.created_at))}</div></div>
+              <div class="meta">${esc(CATEGORY_LABEL[a.category] || a.category)} · ${esc(LANGUAGE_LABEL[a.language] || a.language)} · भेजी गई: ${esc(fmtDate(a.created_at))}</div></div>
             <span class="status ${esc(a.status)}">${esc(STATUS_LABEL[a.status] || a.status)}</span>
           </div>
-          ${a.editor_note ? `<div class="note"><b>Note from the Editorial Team:</b> ${esc(a.editor_note)}</div>` : ''}
+          ${a.editor_note ? `<div class="note"><b>संपादक मंडल की टिप्पणी:</b> ${esc(a.editor_note)}</div>` : ''}
         </div>`).join('');
     }
 
     if (quiz.error) myQuiz.innerHTML = `<div class="alert alert-error">${esc(friendly(quiz.error))}</div>`;
-    else if (!quiz.data.length) myQuiz.innerHTML = '<div class="empty">You have not taken part in a quiz yet. <a href="#quiz" data-close>Take this month\'s quiz →</a></div>';
+    else if (!quiz.data.length) myQuiz.innerHTML = '<div class="empty">आपने अभी तक किसी प्रश्नोत्तरी में भाग नहीं लिया है। <a href="#quiz" data-close>इस माह की प्रश्नोत्तरी में भाग लें →</a></div>';
     else {
       myQuiz.innerHTML = quiz.data.map((q) => `
         <div class="sub-item">
           <div class="top">
-            <div><b>Quiz — ${esc(q.edition)}</b><div class="meta">Submitted ${esc(fmtDate(q.submitted_at))}</div></div>
-            <span class="status shortlisted">Received</span>
+            <div><b>प्रश्नोत्तरी — ${esc(q.edition)}</b><div class="meta">जमा: ${esc(fmtDate(q.submitted_at))}</div></div>
+            <span class="status shortlisted">प्राप्त</span>
           </div>
-          <details><summary>View my answers</summary>
-            <ol>${q.answers.map((ans) => `<li>${esc(ans) || '<span class="muted">— left blank —</span>'}</li>`).join('')}</ol>
+          <details><summary>मेरे उत्तर देखें</summary>
+            <ol>${q.answers.map((ans) => `<li>${esc(ans) || '<span class="muted">— खाली छोड़ा —</span>'}</li>`).join('')}</ol>
           </details>
         </div>`).join('');
     }
   }
 
   window.openAccount = function () {
-    if (!Auth.user) { window.openAuth('login', 'Log in to see your profile and submissions.'); return; }
+    if (!Auth.user) { window.openAuth('login', 'अपनी प्रोफ़ाइल और प्रविष्टियाँ देखने के लिए लॉग इन करें।'); return; }
     const p = Auth.profile || {};
     PROFILE_FIELDS.forEach((f) => { profileForm.elements[f].value = p[f] || ''; });
     profileForm.elements.email.value = Auth.user.email || '';
@@ -315,14 +318,14 @@
     e.preventDefault();
     const v = Object.fromEntries(PROFILE_FIELDS.map((f) => [f, profileForm.elements[f].value.trim()]));
     if (!v.full_name || !v.designation || !v.department || !v.place_of_posting) {
-      return setAlert(acctAlert, 'error', 'Name, designation, department and place of posting are required.');
+      return setAlert(acctAlert, 'error', 'नाम, पदनाम, विभाग और तैनाती स्थल भरना अनिवार्य है।');
     }
     v.employee_no = v.employee_no || null;
     withBusy(profileForm, async () => {
       const { error } = await sb.from('profiles').update(v).eq('id', Auth.user.id);
       if (error) return setAlert(acctAlert, 'error', friendly(error));
       await Auth.reloadProfile();
-      setAlert(acctAlert, 'success', 'Your profile has been updated.');
+      setAlert(acctAlert, 'success', 'आपकी प्रोफ़ाइल अपडेट हो गई है।');
     });
   });
 
@@ -330,7 +333,7 @@
   // WIRING
   // =====================================================================
   if (Auth.unavailable) {
-    const msg = 'Online submissions are temporarily unavailable. Please email your entry to dvchrnewsletter@gmail.com.';
+    const msg = 'ऑनलाइन प्रविष्टि की सुविधा अस्थायी रूप से उपलब्ध नहीं है। कृपया अपनी प्रविष्टि dvchrnewsletter@gmail.com पर ईमेल करें।';
     setAlert(quizAlert, 'error', msg);
     setAlert(artAlert, 'error', msg);
     quizSubmit.disabled = true;

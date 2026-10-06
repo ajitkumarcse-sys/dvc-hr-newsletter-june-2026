@@ -13,15 +13,15 @@ window.APP_CONFIG = {
   // and create the matching edition from the Editor Dashboard (Quiz tab).
   QUIZ_EDITION: '2026-06',
   QUIZ_QUESTIONS: [
-    "What is India's target for achieving 500 GW of non-fossil fuel-based installed electricity capacity?",
-    "Which Maharatna PSU announced plans to invest over ₹2 lakh crore in renewable energy projects in Madhya Pradesh?",
-    "Which NTPC subsidiary is leading the company's renewable energy expansion across India?",
-    "Which Government of India scheme promotes the installation of rooftop solar systems for households?",
-    "Which organization serves as the central nodal agency for implementing many of India's renewable energy power procurement schemes?",
-    "Which transmission PSU has been allocated one of the largest capital expenditure plans among power PSUs for FY 2025–26?",
-    "What is the primary purpose of a Battery Energy Storage System (BESS) being deployed across India's power sector?",
-    "Which renewable energy technology is increasingly being promoted alongside solar and wind to support round-the-clock power supply?",
-    "Which Government ministry is responsible for overseeing India's power sector and Central Public Sector Enterprises such as NTPC, NHPC, and POWERGRID?",
-    "Which clean fuel is being actively promoted by India for decarbonizing industries such as steel, fertilizer, refining, and power?"
+    "500 गीगावाट गैर-जीवाश्म ईंधन आधारित स्थापित विद्युत क्षमता प्राप्त करने के लिए भारत का लक्ष्य क्या है?",
+    "किस महारत्न PSU ने मध्य प्रदेश में नवीकरणीय ऊर्जा परियोजनाओं में ₹2 लाख करोड़ से अधिक के निवेश की योजना की घोषणा की है?",
+    "NTPC की कौन-सी सहायक कंपनी पूरे भारत में उसके नवीकरणीय ऊर्जा विस्तार का नेतृत्व कर रही है?",
+    "भारत सरकार की कौन-सी योजना घरों के लिए रूफ़टॉप सोलर प्रणाली की स्थापना को बढ़ावा देती है?",
+    "भारत की अनेक नवीकरणीय ऊर्जा विद्युत खरीद योजनाओं के कार्यान्वयन के लिए कौन-सा संगठन केंद्रीय नोडल एजेंसी के रूप में कार्य करता है?",
+    "किस पारेषण PSU को वित्त वर्ष 2025–26 के लिए विद्युत क्षेत्र के PSU में सबसे बड़ी पूँजीगत व्यय योजनाओं में से एक आवंटित की गई है?",
+    "भारत के विद्युत क्षेत्र में व्यापक रूप से स्थापित की जा रही बैटरी ऊर्जा भंडारण प्रणाली (BESS) का मुख्य उद्देश्य क्या है?",
+    "सौर और पवन ऊर्जा के साथ-साथ किस नवीकरणीय ऊर्जा प्रौद्योगिकी को चौबीसों घंटे विद्युत आपूर्ति में सहायता के लिए अधिकाधिक बढ़ावा दिया जा रहा है?",
+    "सरकार का कौन-सा मंत्रालय भारत के विद्युत क्षेत्र तथा NTPC, NHPC और POWERGRID जैसे केंद्रीय सार्वजनिक क्षेत्र के उद्यमों की देखरेख के लिए उत्तरदायी है?",
+    "इस्पात, उर्वरक, रिफ़ाइनिंग और विद्युत जैसे उद्योगों को कार्बन-मुक्त करने के लिए भारत द्वारा किस स्वच्छ ईंधन को सक्रिय रूप से बढ़ावा दिया जा रहा है?"
   ]
 };
